@@ -57,6 +57,9 @@
 			}
 		}
 	}
+    a.onGameOver(function(){
+        alert("Game over")
+    });
     function mergeBlocks(i, j, m, n){
         var block2 = document.getElementById("block" + i + "-" + j);
         var block1 = document.getElementById("block" + m + "-" + n);
@@ -112,7 +115,6 @@
             plate.removeChild( plate.firstChild );
         };
         a.reset();
-        a.shiftup();
         console.log("plate resetted...")
     }
 	function updateHtml(){
@@ -162,6 +164,6 @@
     var plate = document.getElementById('plate');
     plate.style.width = (block_size+3) * 4 +3;
     plate.style.height = (block_size+3) * 4 +3;
-	a.shiftup();
+	a.reset();
 </script>
 </html>

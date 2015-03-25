@@ -34,6 +34,7 @@ var Plate = (function(){
 		var _plate 	= {};
 		var _emptyArray = new Array;
 		var _me = this;
+		var _onGameOver = function(){};
 		var i,j;
 
 		for( i = 0; i < _height; i ++ ){
@@ -45,6 +46,7 @@ var Plate = (function(){
 				//console.log( _plate[i][j].value() );
 			}
 		}
+
 
 		function emptyArrayPop(i,j) {
 			var key = i * _height + j;
@@ -96,6 +98,113 @@ var Plate = (function(){
 			}
 		}
 
+		function testShift( i, j, m, n ) {		// test shift b towards a
+			var a, b;
+			if( _plate[i] === undefined || _plate[m] === undefined ) {
+				return 0;
+			}
+			if( _plate[i][j] === undefined || _plate[m][n] === undefined ) {
+				return 0;
+			}
+
+			a = _plate[i][j];
+			b = _plate[m][n];
+
+			if( typeof a.value != 'function' || typeof b.value != 'function' ) {
+				return 0;
+			}
+
+			if( a.value() === 0 && b.value() === 0 ){
+				return 0;
+			} else if( a.value() === b.value() )	// a equals b, then merge them
+			{
+				return 1;
+			} else if( a.value() === 0 ) { 			// a is empty, shift it
+				return 1;
+			} else {								// stay still
+				return 0;
+			}
+		}
+
+		function isStuck(direction) {
+			var result = 0;
+			var m;
+			switch(direction) {
+				case 0: //'up' 
+					for( var i = 0; i < _height; i++ ) {
+						for( var j = 0; j < (_width-1); j++ ) {
+							m = j;
+							do{
+								result = testShift( i, m, i, m+1 );
+								m--;
+							} while(result === 1);
+							if( j !== ++m  || result === 2) {
+								//console.log(direction + "not stuck");
+								return false;	// movable
+							}
+						}
+					}
+				break;
+
+				case 2: // down
+					for( var j = 0; j < _width; j++ ) {
+						for( var i = (_height-1); i > 0; i--) {
+							m = i;
+							do{
+								result = testShift( m, j, m-1, j );;
+								m++;
+							} while(result == 1);
+							if( i !== --m  || result === 2) {
+								//console.log(direction + "not stuck");
+								return false;	// movable
+							}
+						}
+					}
+				break;
+
+				case 1: // left
+					for( var i = 0; i < _height; i++ ) {
+						for( var j = 0; j < (_width-1); j++ ) {
+							m = j;
+							do{
+								result = testShift( i, m, i, m+1 );
+								m--;
+							} while(result === 1);
+							if( j !== ++m  || result === 2) {
+								//console.log(direction + "not stuck");
+								return false;	// movable
+							}
+						}
+					}
+				break;
+				case 3: //right
+					for( var i = 0; i < _height; i++ ) {
+						for( var j = (_width-1); j > 0 ; j-- ) {
+							m = j;
+							do{
+								result = testShift( i, m, i, m-1 );
+								m++;
+							} while(result === 1);
+							if( j !== --m  || result === 2) {
+								//console.log(direction + "not stuck");
+								return false;	// movable
+							}
+						}
+					}
+				break;
+			}
+			return true;
+		}
+
+		function isGameOver() {
+			for(var i = 0; i < 3; i ++ ){
+				if( !isStuck(i) ) {
+					return false;
+				}
+			}
+			return true; // stuck in 4 directions, game over
+		}
+
 		function displayShift( i, j, m, n, merged ) {
 			//console.log(typeof display);
 			//if(typeof this.display == 'function') 
@@ -122,9 +231,15 @@ var Plate = (function(){
 			return str;
 		}
 
-		this.randomGenerate = function() {
+		this.randomGenerate = function(move) {
 			var rand, l, r, key;
-			if( _emptyArray.length === 0 ) {	// no empty unit
+			if( _emptyArray.length === 0 && move === 0 ) {
+				if(isGameOver()){
+					gameOver();
+				}
+				return false
+			}
+			if( _emptyArray.length === 0 || move === 0) {
 				return false;
 			}
 
@@ -166,7 +281,7 @@ var Plate = (function(){
 		}
 
 		this.shiftup = function() {
-			var result = 0;
+			var result = 0, move = 0;
 			var m;
 			for( var j = 0; j < _width; j++ ) {				// col
 				for( var i = 0; i < (_height-1); i++ ) {	// row
@@ -178,14 +293,15 @@ var Plate = (function(){
 					if( i !== ++m || result === 2) {
 						result === 2 ?  displayShift(m, j, i+1, j, true)        // merge
 										: displayShift(m+1, j, i+1, j, false);  // just shift
+						++move;
 					}
 				}
 			}
-			_me.randomGenerate();
+			_me.randomGenerate(move);
 		}
 
 		this.shiftdown = function() {
-			var result = 0;
+			var result = 0, move = 0;
 			var m;
 			for( var j = 0; j < _width; j++ ) {
 				for( var i = (_height-1); i > 0; i--) {
@@ -197,14 +313,15 @@ var Plate = (function(){
 					if( i !== --m  || result === 2) {
 						result === 2 ?  displayShift(m, j, i-1, j, true)
 										: displayShift(m-1, j, i-1, j, false);
+						++move;
 					}
 				}
 			}
-			_me.randomGenerate();
+			_me.randomGenerate(move);
 		}
 
 		this.shiftleft = function() {
-			var result = 0;
+			var result = 0, move = 0;
 			var m;
 			for( var i = 0; i < _height; i++ ) {
 				for( var j = 0; j < (_width-1); j++ ) {
@@ -216,14 +333,15 @@ var Plate = (function(){
 					if( j !== ++m  || result === 2) {
 						result === 2 ?  displayShift(i, m, i, j+1, true)
 										: displayShift(i, m+1, i, j+1, false);
+						++move;
 					}
 				}
 			}
-			_me.randomGenerate();
+			_me.randomGenerate(move);
 		}
 
 		this.shiftright = function() {
-			var result = 0;
+			var result = 0, move = 0;
 			var m;
 			for( var i = 0; i < _height; i++ ) {
 				for( var j = (_width-1); j > 0 ; j-- ) {
@@ -235,10 +353,11 @@ var Plate = (function(){
 					if( j !== --m  || result === 2) {
 						result === 2 ?  displayShift(i, m, i, j-1, true)
 										: displayShift(i, m-1, i, j-1, false);
+						++move;
 					}
 				}
 			}
-			_me.randomGenerate();
+			_me.randomGenerate(move);
 		}
         this.reset = function() {
             _plate 	= {};
@@ -251,7 +370,17 @@ var Plate = (function(){
                     //console.log( _plate[i][j].value() );
                 }
             }
+            _me.randomGenerate(1);
             //console.log("data model clear");
+        }
+        
+        this.onGameOver = function(callback) {
+        	if(typeof callback == 'function') _onGameOver = callback;
+        }
+
+        function gameOver(){
+        	console.log("game over");
+        	_onGameOver();
         }
 	}
 })();

@@ -8,6 +8,11 @@
 /*                                                   RESET
 __________________________________________________________
 */
+
+@font-face {
+    font-family: 'Oswald';
+    src: url("Oswald.woff2") ;
+}
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -129,7 +134,7 @@ div#about {
  
 div#work, div#projects, div#contact {
     padding-top: 0;
-    min-height: 1000px; }
+    min-height: 600px; }
  
 /*                                              TYPOGRAPHY 
 __________________________________________________________
@@ -152,7 +157,7 @@ div#work h2,
     float:right; }
  
 h1 {
-    font: 32px 'Arial Narrow', Arial, sans-serif;
+    font: 32px 'Microsoft YaHei', Arial, sans-serif;
     color: #fff;
     text-transform: uppercase; }
  
@@ -283,14 +288,14 @@ div#headline {
     margin-left: 32px; }
  
     div#headline h1 {
-        font: normal 56px/56px 'Oswald';
+        font: normal 56px/56px 'Microsoft YaHei';
         color: #ff3300;
         text-transform: uppercase; }
  
     div#headline h2 { color: #333; }
  
         div#headline h2 span {
-            font: normal 25px/40px 'Oswald';
+            font: normal 25px/40px 'Microsoft YaHei';
             text-transform: uppercase;
             margin-left: 0; }
  
@@ -412,19 +417,19 @@ __________________________________________________________
     margin-top: 32px; }
  
     .item_text h3 {
-        font: normal 26px/28px 'Oswald';
+        font: normal 26px/28px 'Microsoft YaHei';
         text-transform: uppercase;
         color: #ff3300;
         margin: 0 0 10px 0;
         float: left; }
  
     .item_text h4 {
-        font: normal 20px/22px 'Oswald';
+        font: normal 20px/22px 'Microsoft YaHei';
         color: #333333;
         margin: 10px 0; }
  
     .item_text h5 {
-        font: normal 14px/22px 'Oswald';
+        font: normal 14px/22px 'Microsoft YaHei';
         color: #333333;
         margin: 0;
         width: auto; }
@@ -555,7 +560,7 @@ div#contact { /* min-height: 300px;*/ }
     float: left; }
  
     .contactContainer label {
-        font: normal 14px/38px 'Oswald';
+        font: normal 14px/38px 'Microsoft YaHei';
         width: 100px;
         float: left; }
  
@@ -573,7 +578,7 @@ div#contact { /* min-height: 300px;*/ }
  
     .contactContainer input.btn {
         background: #ff3300;
-        font: normal 14px/30px 'Oswald';
+        font: normal 14px/30px 'Microsoft YaHei';
         color: #fff;
         text-transform: uppercase;
         width: auto !important;
@@ -594,7 +599,7 @@ div#contact { /* min-height: 300px;*/ }
     color: #777; }
  
 .contactContainer h3 {
-    font: normal 20px/22px 'Oswald';
+    font: normal 20px/22px 'Microsoft YaHei';
     text-transform: uppercase;
     color: #333;
     margin: 0 0 20px 0; }

@@ -625,8 +625,8 @@ div#contact { /* min-height: 300px;*/ }
         border-radius: 16px;
     } 
     
-    .contact_social .facebook {
-        background-position: 0 0;
+    .contact_social .github {
+        background-position: 0px 0;
         margin-right: 10px; }
  
     .contact_social .twitter {
@@ -639,6 +639,7 @@ div#contact { /* min-height: 300px;*/ }
  
     .contact_social .gmail { 
         background-position: -96px 0; 
+         margin-right: 10px;
     }
     
     .contact_social .address {

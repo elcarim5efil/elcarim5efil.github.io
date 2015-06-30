@@ -48,12 +48,10 @@ $(document).ready(function(){
 
         var elemTop = $(elem).offset().top;
         var elemBottom = elemTop + $(elem).height();
-
         return ((elemBottom >= docViewTop) && (elemTop <= docViewBottom));
     }
 
     $(window).scroll(function() {
-                
         if(isScrolledIntoView('#about')) {
             $('div#navbar').stop().animate({backgroundPosition: nav_about +'px 0'}, {duration:300});
                lastclicked = 315;

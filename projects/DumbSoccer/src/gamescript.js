@@ -2,20 +2,19 @@ var space;
 var shapeArray=[];
 var spaceWidth = 800;
 var spaceHeight = 400;
-
-var gameScene = cc.Scene.extend({
-	onEnter:function () {
-		this._super();
-		gameLayer = new game();
-		gameLayer.init();
-		this.addChild(gameLayer);
-	}
-});
-
+var restart = false;
+var score={a: 0, b: 0};
+var round={a: 0, b: 0};
 var playerA;
 var playerB;
 var goalkeeperA;
 var goalkeeperB;
+var roundBoard;
+var scoreBoard;
+var infoBoard;
+var ROUNDNUM = 5;
+var btnA;
+var btnB;
 var game = cc.Layer.extend({
 	init:function () {
 		this._super();
@@ -32,20 +31,28 @@ var game = cc.Layer.extend({
 
 		var debugDraw = cc.PhysicsDebugNode.create(space);
 		debugDraw.setVisible(true);
-		//this.addChild(debugDraw);
+		this.addChild(debugDraw);
+
+        scoreBoard = cc.LabelTTF.create("0 : 0","Arial","32",cc.TEXT_ALIGNMENT_CENTER);
+        this.addChild(scoreBoard);
+        scoreBoard.setPosition(400,350);
+
+        roundBoard = cc.LabelTTF.create("0 - 0","Arial","24",cc.TEXT_ALIGNMENT_CENTER);
+        this.addChild(roundBoard);
+        roundBoard.setPosition(400,380);
+
+        infoBoard = cc.LabelTTF.create("","Microsoft YaHei","60",cc.TEXT_ALIGNMENT_CENTER);
+        infoBoard.setPosition(400,200);
 
         this.spaceBoundaryInit();
         this.initButtons();
-        this.restart()
+        this.initGame();
 
-        var gateL = new Gate('L');
-        var gateR = new Gate('R');
-        gateL.setPosition(50,180);
-        gateR.setPosition(750,180);
+        var gateL = new Gate('L', 50, 180);
+        var gateR = new Gate('R', 750, 180);
         this.addChild(gateL);
         this.addChild(gateR);
 
-        ;
 		//cc.eventManager.addListener(touchListener, this);
 	},
 	addBody: function(posX,posY,width,height,isDynamic,spriteImage,type){
@@ -117,6 +124,10 @@ var game = cc.Layer.extend({
         this.addChild(btnA, 0);
         btnA.setPosition(700,50);
 
+        btnB = cc.Sprite.create("assets/buttonB.png");
+        btnB.setScale(2);
+        this.addChild(btnB, 0);
+        btnB.setPosition(100,50);
 
         cc.eventManager.addListener({
             event: cc.EventListener.KEYBOARD,
@@ -151,12 +162,11 @@ var game = cc.Layer.extend({
             }
         }, this);
     },
-    restart: function(){
+    initGame: function(){
         var ball = new Ball();
         this.addChild(ball,0);
         ball.setPosition(400,200);
         this.ball = ball;
-
         playerA = new BallPlayer(cc.p(500,100), 'A');
         playerA.spawn(this);
         goalkeeperA = new Goalkeeper(cc.p(600,100), 'A');
@@ -170,14 +180,30 @@ var game = cc.Layer.extend({
         this.scheduleUpdate();
 
         setTimeout(function(){
-            playerA.jump();
-            playerB.jump();
-            goalkeeperA.jump();
+            //playerA.jump();
+            //playerB.jump();
+            //goalkeeperA.jump();
+            //restartGame();
         },0);
         setInterval(function(){
             var wind = Math.random() * 100 - 50;
             space.gravity = cp.v(wind, -750);
         }, 1000);
+    },
+    restart: function(){
+        this.ball.setPosition(400, 200);
+        setTimeout(function(){
+            playerA.setPosition(500,120);
+        } , 200);
+        setTimeout(function(){
+            goalkeeperA.setPosition(600,120);
+        } , 400);
+        setTimeout(function(){
+            playerB.setPosition(300,120);
+        } , 600);
+        setTimeout(function(){
+            goalkeeperB.setPosition(200,120);
+        } , 800); 
     }
 });
 
@@ -231,6 +257,7 @@ var Ball = cc.PhysicsSprite.extend({
         this.body = body;
         this.shape = shape;
         this.setBody(this.body);
+        this.scheduleUpdate();
         //this.shape.group = 100;
 	},
     move: function(){
@@ -239,18 +266,60 @@ var Ball = cc.PhysicsSprite.extend({
         this.runAction(moveAction);
     },
 	update: function() {
-		
+		var x = this.getPosition().x;
+        var y = this.getPosition().y;
+        if(restart == false) {
+            if(x < 100 && y < 200) {
+                console.log("A team score");
+                restart = true;
+                this.score('a');
+            }
+            if(x > 700 && y < 200) {
+                console.log("B team score");
+                restart = true;
+                this.score('b');
+            }
+        }
+        //console.log(this.getPosition());
 	},
 	reset: function(){
-
-	}
+	},
+    score: function(team){
+        var endround = false;
+        score.a += team == 'a';
+        score.b += team == 'b';
+        showInfo("GOAL GOAL GOAL !!!");
+        if( score.a == ROUNDNUM || score.b == ROUNDNUM) {
+            endround = true;
+            setTimeout(function(){
+                round.a += score.a == ROUNDNUM;
+                round.b += score.b == ROUNDNUM;
+                score.a = 0;
+                score.b = 0;
+                roundBoard.setString(round.b + ' - ' + round.a);
+                scoreBoard.setString(score.b + ' : ' + score.a);
+                showInfo("Round " + round.b + ' - ' + round.a);
+                restartGame();
+            }, 2000);
+        }
+        scoreBoard.setString(score.b + ' : ' + score.a);
+        console.log(score.b + ' : ' + score.a);
+        if(endround == false) {
+            restartGame();
+        }
+    }
 });
 
 var Gate = cc.Sprite.extend({
-    ctor: function(side){
+    ctor: function(side, x, y){
         this._super();
         this.initWithFile("assets/gate"+ side +".png");
-        this.scheduleUpdate();
+        var thickness = 5;
+        space.addShape(new cp.SegmentShape(space.staticBody, cp.v(x-50, y+100-thickness), cp.v(x+50, y+100-thickness), thickness));
+        
+        this.setPosition(x,y);
+        //gateR.setPosition(750,180);
+        //this.scheduleUpdate();
     },
     update: function() {
 
@@ -265,8 +334,8 @@ var BallPlayer = cc.Class.extend({
         this.leftArm = new CPSprite('assets/arm'+team+'.png', cc.pAdd(pos,cc.p(19.87,15)), 2, 0.4, 0.2);
         this.rightArm = new CPSprite('assets/arm'+team+'.png', cc.pAdd(pos,cc.p(-19.87,15)), 2,0.4,0.2);
         this.body = new CPSprite('assets/body'+team+'.png', pos, 12, 0.5, 0.5);
-        this.leftLeg = new CPSprite('assets/leg'+team+'.png', cc.pAdd(pos,cc.p(-6,-32)), 20, 0.8, 1);
-        this.rightLeg = new CPSprite('assets/leg'+team+'.png', cc.pAdd(pos,cc.p(6,-32)), 20,0.8,1);
+        this.leftLeg = new CPSprite('assets/leg'+team+'.png', cc.pAdd(pos,cc.p(-6,-32)), 15, 0.8, 1);
+        this.rightLeg = new CPSprite('assets/leg'+team+'.png', cc.pAdd(pos,cc.p(6,-32)), 15,0.8,1);
 	
         this.leftArm.setRotation(-90);
         this.leftArm.body.setAngle(cc.degreesToRadians(90));
@@ -314,8 +383,6 @@ var BallPlayer = cc.Class.extend({
         layer.addChild(this.leftArm, 0);
     },
     jump: function(){
-        console.log("jump~~");
-        //this.head.body.applyImpulse(cp.v(0, 1*10000), cp.v(0, 0));
         this.leftLeg.body.applyImpulse(cp.v(0, 1*1000), cp.v(0, 0));
         this.rightLeg.body.applyImpulse(cp.v(0, 1*1000), cp.v(0, 0));
     },
@@ -326,7 +393,7 @@ var BallPlayer = cc.Class.extend({
         this.rightLeg.setRotation(0);
     },
     kick: function(){
-        console.log("kick~~");
+        //console.log("kick~~");
         if(this.team == 'A') {
             this.leftLeg.body.applyImpulse(cp.v(0.5*10000, 0), cp.v(0,39));
             this.body.body.applyImpulse(cp.v(-2*1000, 0), cp.v(0, 0));
@@ -340,14 +407,17 @@ var BallPlayer = cc.Class.extend({
             this.rightLeg.body.applyImpulse(cp.v(2*1000, 0), cp.v(0, 0));
             this.jump();
         }
-        //var moveAction = cc.rotateBy(1,70);
-        //this.leftLeg.runAction(moveAction);
-        //this.rightLeg.runAction(moveAction);
-        //var moveAction = cc.MoveTo.create(2.5, new cc.Point(0, 10));
-        //this.body.runAction(moveAction);
     },
     getRotation: function(){
         return this.body.getRotation();
+    },
+    setPosition: function(x, y){
+        this.body.setPosition(x, y);
+        this.head.setPosition(x, y+50);
+        this.leftLeg.setPosition(x-3, y);
+        this.rightLeg.setPosition(x+3, y);
+        this.leftArm.setPosition(x-3, y+50);
+        this.rightArm.setPosition(x+3, y+50);
     }
 });
 
@@ -407,7 +477,7 @@ var Goalkeeper = cc.Class.extend({
         layer.addChild(this.leftArm, 0);
     },
     jump: function(){
-        console.log("jump~~");
+        //console.log("jump~~");
         //this.head.body.applyImpulse(cp.v(0, 1*10000), cp.v(0, 0));
         this.leftLeg.body.applyImpulse(cp.v(0, 1*1000), cp.v(0, 0));
         this.rightLeg.body.applyImpulse(cp.v(0, 1*1000), cp.v(0, 0));
@@ -419,7 +489,7 @@ var Goalkeeper = cc.Class.extend({
         this.rightLeg.setRotation(0);
     },
     kick: function(){
-        console.log("kick~~");
+        //console.log("kick~~");
         if(this.team == 'A') {
             this.leftLeg.body.applyImpulse(cp.v(0.5*10000, 0), cp.v(0,39));
             this.body.body.applyImpulse(cp.v(-2*1000, 0), cp.v(0, 0));
@@ -439,6 +509,14 @@ var Goalkeeper = cc.Class.extend({
     },
     getRotation: function(){
         return this.body.getRotation();
+    },
+    setPosition: function(x, y){
+        this.body.setPosition(x, y);
+        this.head.setPosition(x, y+50);
+        this.leftLeg.setPosition(x-3, y);
+        this.rightLeg.setPosition(x+3, y);
+        this.leftArm.setPosition(x-3, y+50);
+        this.rightArm.setPosition(x+3, y+50);
     }
 });
 
@@ -456,5 +534,30 @@ var CPSprite = cc.PhysicsSprite.extend({
         shape.setFriction(friction || 0.8);
         this.body = body;
         this.shape = shape;
+    }
+});
+function restartGame(){
+    setTimeout(function(){
+        showInfo("Start !!!");
+        gameLayer.restart();
+        restart = false;
+    }, 2000);
+       
+}
+function showInfo(text, sec) {
+    sec = sec || 2;
+    infoBoard.setString(text);
+    gameLayer.addChild(infoBoard);
+    setTimeout(function(){
+        gameLayer.removeChild(infoBoard);
+    }, 1000);
+}
+var gameScene = cc.Scene.extend({
+    onEnter:function () {
+        this._super();
+        gameLayer = new game();
+        gameLayer.init();
+        this.addChild(gameLayer);
+        showInfo("Start !!!");
     }
 });

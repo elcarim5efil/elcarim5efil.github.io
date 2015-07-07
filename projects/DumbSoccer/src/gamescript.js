@@ -29,9 +29,9 @@ var game = cc.Layer.extend({
         space.iterations = 5;
 		space.gravity = cp.v(0, -750);
 
-		var debugDraw = cc.PhysicsDebugNode.create(space);
-		debugDraw.setVisible(true);
-		this.addChild(debugDraw);
+		//var debugDraw = cc.PhysicsDebugNode.create(space);
+		//debugDraw.setVisible(true);
+		//this.addChild(debugDraw);
 
         scoreBoard = cc.LabelTTF.create("0 : 0","Arial","32",cc.TEXT_ALIGNMENT_CENTER);
         this.addChild(scoreBoard);

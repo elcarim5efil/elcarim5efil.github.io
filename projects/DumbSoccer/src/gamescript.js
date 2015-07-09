@@ -15,6 +15,8 @@ var infoBoard;
 var ROUNDNUM = 5;
 var btnA;
 var btnB;
+
+alert("press W to control blue team, press UP to control red team.");
 var game = cc.Layer.extend({
 	init:function () {
 		this._super();

@@ -1,9 +1,8 @@
 <!DOCTYPE html>  
-<html lang="en">  
+<html>  
     <head>  
         <meta charset="UTF-8" />  
-        <title>Example 17 - (A* working on a grid with unset indexes using  
-        web workers)</title>
+        <title>A* 寻径</title>
         <script type="text/javascript" src="a_star.js"></script> 
         <script>
         var map = [];
@@ -56,6 +55,7 @@
             var a_star = new AStar(map, map_size.width, map_size.height, start, terminal);
             a_star.createPath();
             path = a_star.getPath();
+
             drawPath();
         }
         function clearPath(){
@@ -69,11 +69,13 @@
                 }
             }
         }
+        
         function drawPath(){
-            for(var k in path){
+            var p_index = path.length - 1;
+            var helper = function(){
                 var x, y;
-                x = path[k].x;
-                y = path[k].y;
+                x = path[p_index].x;
+                y = path[p_index].y;
                 if(x === start.x && y === start.y) {
                     drawDot(x*unit.width,y*unit.height,10,'#44BB55');
                 } else if(x === terminal.x && y === terminal.y) {
@@ -81,9 +83,14 @@
                 } else {
                     drawDot(x*unit.width,y*unit.height,10);
                 }
-                
+                p_index--;
+                if( p_index >= 0){
+                    setTimeout(helper, 100);
+                }
             }
+            return helper();
         }
+
         window.onload =function(){
             console.log("loading map");
             canvas = document.getElementById('myCanvas');

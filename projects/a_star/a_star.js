@@ -12,7 +12,7 @@ var AStar = function(map, mapW, mapH, src, dest){
 	var _count = 0;
 	var _arrived = false;
 	_openList.add(new Node(null, src));// set start point
-	console.log(_openList.printData());
+	//console.log(_openList.printData());
 	function index(i,j){
 		var temp = i*_mapW + j;
 		return temp < 0 ? -1 :

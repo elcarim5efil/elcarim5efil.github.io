@@ -1,0 +1,200 @@
+<!DOCTYPE html>  
+<html>  
+    <head>  
+        <meta charset="UTF-8" />  
+        <title>A* 寻径</title>
+        <script type="text/javascript" src="a_star.js"></script> 
+        <script>
+        var map = [];
+        var unit = {  
+            width: 10,  
+            height: 10 
+        }  
+        var map_size = {  
+            width: 80,  
+            height: 60  
+        }
+        var start={
+            x:4,
+            y:2
+        };
+        var terminal={
+            x:20,
+            y:30
+        };
+        var setting_status = 'start';
+        var canvas;    
+        var ctx;
+        var path;
+
+        function index(i,j){
+            var temp = i*map_size.width + j;
+            return temp < 0 ? -1 :
+                   temp > map_size.width * map_size.height -1 ? -1 :
+                   temp ;
+        }
+        function drawDot(srcX, srcY, diameter, color){
+            var radius = diameter/2;
+            ctx.fillStyle = color || "#4c5ccA";
+            ctx.beginPath();
+            ctx.arc(srcY+radius,srcX+radius,radius,0,Math.PI*2,true); //Math.PI*2是JS计算方法，是圆
+            ctx.closePath();
+            ctx.fill();
+        }
+        function drawBlock(srcX, srcY, width, color){
+            drawRect(srcX, srcY, width, width, color)
+        }
+        function drawRect(srcX, srcY, height, width, color) {
+            ctx.strokeStyle = "lightgrey";
+            ctx.strokeRect(srcY, srcX, width, height);
+            ctx.fillStyle = color ||'#FFAAAA';
+            ctx.fillRect(srcY,srcX,width,height);  
+        }
+        function createPath(){
+            clearPath();
+            var a_star = new AStar(map, map_size.width, map_size.height, start, terminal);
+            a_star.createPath();
+            path = a_star.getPath();
+
+            drawPath();
+        }
+        function clearPath(){
+            for(var k in path){
+                var x = path[k].x, y = path[k].y;
+                var k = index(x,y);
+                if( map[k] == 0 ) {
+                    drawBlock(x*unit.height, y*unit.width, unit.width);
+                } else {
+                    drawBlock(x*unit.height, y*unit.width, unit.width ,"#000000");
+                }
+            }
+        }
+        
+        function drawPath(){
+            var p_index = path.length - 1;
+            var helper = function(){
+                var x, y;
+                x = path[p_index].x;
+                y = path[p_index].y;
+                if(x === start.x && y === start.y) {
+                    drawDot(x*unit.width,y*unit.height,10,'#44BB55');
+                } else if(x === terminal.x && y === terminal.y) {
+                    drawDot(x*unit.width,y*unit.height,10,'#445599');
+                } else {
+                    drawDot(x*unit.width,y*unit.height,10);
+                }
+                p_index--;
+                if( p_index >= 0){
+                    setTimeout(helper, 100);
+                }
+            }
+            return helper();
+        }
+
+        window.onload =function(){
+            console.log("loading map");
+            canvas = document.getElementById('myCanvas');
+            ctx = canvas.getContext('2d');
+            canvas.addEventListener('click', handleClick, false);
+            generateRamdonMap();
+            console.log("map: " + map.length);
+        }
+        function handleClick(e) {   
+            var scrollX = document.documentElement.scrollLeft || document.body.scrollLeft;
+            var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+            var y = Math.floor((e.clientX + scrollX - canvas.style.left)/unit.height)-1;
+            var x = Math.floor((e.clientY + scrollY - canvas.style.top)/unit.width)-1;
+            if( y < 0 || y > map_size.width) {
+                return;
+            }
+            if( x < 0 || x > map_size.height) {
+                return;
+            }
+            console.log(x+":"+y);
+            switch(setting_status){
+                case 'start':
+                    setStart(x, y);
+                break;
+                case 'terminal':
+                    setTerminal(x, y);
+                break;
+                case 'clearObstacle':
+                    clearObstacle(x,y);
+                break;
+                case 'ostacle':
+                    setObstacle(x,y);
+                break;
+            }
+        }
+        function generateRamdonMap(clear_percent){
+            clear_percent = clear_percent || 0.9;
+            for(var i = 0; i < map_size.height; ++i){
+                for(var j = 0; j < map_size.width; ++j){
+                    var k = index(i,j);
+                    map[k] = Math.floor(Math.random() / clear_percent);
+                    if( map[k] == 0 ) {
+                        drawBlock(i*unit.width, j*unit.height, unit.width);
+                    } else {
+                        drawBlock(i*unit.width, j*unit.height, unit.width ,"#000000");
+                    }
+                }
+            }
+        }
+        function switchToStart(){
+            setting_status = 'start';
+        }
+        function switchToTerminal(){
+            setting_status = 'terminal';
+        }
+        function switchToClearObstacle(){
+            setting_status = 'clearObstacle';
+        }
+        function switchToSetObstacle(){
+            setting_status = 'ostacle';
+        }
+        function setStart(x, y){
+            var k = index(x,y);
+            if( map[k] === 0 ) { // set start point
+                drawBlock(start.x*unit.width, start.y*unit.width,unit.width);
+                drawBlock(x*unit.width,y*unit.width,unit.width,'#44BB55');
+                start.x = x;
+                start.y = y;
+            }
+        }
+        function setTerminal(x, y){
+            var k = index(x,y);
+            if( map[k] === 0 ) { // set terminal point
+                drawBlock(terminal.x*unit.width, terminal.y*unit.width,unit.width);
+                drawBlock(x*unit.width,y*unit.width,unit.width,'#445599');
+                terminal.x = x;
+                terminal.y = y;
+            }
+        }
+        function clearObstacle(x,y){
+            var k = index(x,y);
+            if( map[k] === 1 ) {
+                map[k] = 0;
+                drawBlock(x*unit.width,y*unit.width,unit.width);
+            }
+        }
+        function setObstacle(x,y){
+            var k = index(x,y);
+            if( map[k] === 0 ) {
+                map[k] = 1;
+                drawBlock(x*unit.width,y*unit.width,unit.width, "#000000");
+            }
+        }
+        </script>  
+    </head>  
+    <body>
+        <canvas id="myCanvas" width="1300" height="600" border-color="black"></canvas>
+        <h1>A*</h1>
+        <h2>setting start point</h2>
+        <input type="button" value="set start point" onclick="switchToStart()">
+        <input type="button" value="set terminal point" onclick="switchToTerminal()">
+        <input type="button" value="clear obstacle" onclick="switchToClearObstacle()">
+        <input type="button" value="set obstacle" onclick="switchToSetObstacle()">
+        <input type="button" value="create path" onclick="createPath()">
+               
+    </body>     
+</html>  

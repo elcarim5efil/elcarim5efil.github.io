@@ -1,540 +1,179 @@
-<!--
-@version   1.0 | December 20, 2011
-@author    Mihai Balea http://www.mihaibalea.info | http://www.templatesbook.com
-@copyright Copyright (C) 2012 TemplatesBook
-@license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
--->
+<!doctype html>
+<html ng-app="myProfile" >
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//CN"> 
-<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<meta http-equiv="Lang" content="cn"/>
-<meta name="author" content="Mihai Balea"/>
-<meta http-equiv="Reply-to" content="contact@mihaibalea.info"/>
+	<meta charset="utf-8">
+	<script type="text/javascript" src= "frameworks/angular.js"></script>
+	<script type="text/javascript" src= "frameworks/angular-animate.js"></script>
+	<script type="text/javascript" src= "frameworks/angular-touch.js"></script>
+	<script type="text/javascript" src="frameworks/ui-bootstrap-tpls-0.13.0.js"></script>
+	<script type="text/javascript" src="js/data.js" ></script>
+	<script type="text/javascript" src= "js/controller.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
 
-<title>吴子然 | Elcarim</title>
-
-<link href="favicon.ico" type="image/gif" rel="icon" />
-<link id="mainCSS" rel="stylesheet" type="text/css" href="css/style.css"/>
-<link id="mainCSS" rel="stylesheet" type="text/css" href="css/skins.css"/>
-
-
-
-<script charset="utf-8" type="text/javascript" src="js/jquery.1.4.2.min.js"></script>
-<script type= "text/javascript" src="js/queryLoader.js" ></script>
-<script type="text/javascript" src="js/jquery.backgroundposition.js"></script>
-<script type="text/javascript" src="js/jquery.smooth-scroll.js"></script>
-<script type="text/javascript" src="js/sp.js"></script>
-<script type="text/javascript" src="js/js.js"></script>
-<script type="text/javascript" src="js/skins.js"></script>
-
+	<title>Elcarim</title>
 </head>
 
-<body id="body_pat" class="blue">
-<div id="wrapper">
-<!------------------------- NAVIGATION -->
+<body style='background-color:#444444'>
+	<header>
+		
+	</header>
 
-    <div id="navbarHolder">
-        <div id="navbar">
-            <ul>
-                                
-                <li><a id="nav_about" href="#about">ABOUT<span class="m_w">ABOUT</span><span class="m_r">ABOUT</span></a></li>
-                <li><a id="nav_work" href="#work">WORK<span class="m_w">WORK</span><span class="m_r">WORK</span></a></li>
-                <li><a id="nav_projects" href="#projects">Projects<span class="m_w">Projects</span><span class="m_r">Projects</span></a></li>
-                <li><a id="nav_contact" href="#contact">Contact<span class="m_w">Contact</span><span class="m_r">Contact</span></a></li>
-            </ul>
-        </div>
-    </div><!-- end div #navbarHolder -->
+	<div class="col-sm-3 col-md-2 sidebar" id='sidebar'>
+		<ul class="nav nav-pills nav-stacked affix">
+			<li role="presentation"><a href="#Profile">Profile</a></li>
+			<li role="presentation"><a href="#Works">Works</a></li>
+			<li role="presentation"><a href="#Projects">Projects</a></li>
+			<li role="presentation"><a href="#Contact">Contact</a></li>
+		</ul>
+	</div>
 
-<!------------------------- CONTENT -->
-    
-    <div id="container">
-        <div id="logo" title="Elcarim Efil" class="site-message-absolute">
-            <div class="nav_logo_w"></div>
-        </div>
+	<div class='cotainer' style='width:80%; margin:auto; padding:10% 10% 10% 10%; background-color:#FFFFFF'>
 
-<!------------------------- ABOUT -->
-        
-        <div id="about">
-            <a id="logo_big" title="Elcarim Efil" href="index.html"></a>
-            <div id="headline" class="left grid">
-                <h1>吴子然</h1>
-                <h2><span>东南大学 自动化学院</span><br /><a href="mailto:elcarim5efil@aliyun.com">elcarim5efil@aliyun.com</a></h2>
-            </div>
-            <div id="about_pict" class="grid"><img src="images/my_picture.jpg" alt="Mihai Balea | Portfolio" /></div>
-            <div class="clear">&nbsp;</div>
-            <div class="left grid"></div>
-            <div class="left grid about_text">
-				<p>
-					勤奋刻苦，善于钻研，自律严谨，有探索精神，勇于尝试新技术，能够独立完成开发，也乐意参与团队协作相互学习。自从尝试Web应用开发后一发不可收拾，爱上了JavaScript以及Node。鉴于自身爱好电子游戏，因此以JavaScript和Html5为基础，尝试开发一些小游戏。虽然作品不多，但尝试过matter.js、cocos2d-html5、chipmunk等开发工具，并有少许心得。除此以外，对服务器开发也十分热爱，目前正在学习Nginx和thttpd，打算尝试着写一个简单的http服务器，以加深对服务器开发的理解。
-				</p>
-            </div>
-            <div id="skill" class="right grid about_text">
-				<p>
-					<h2>.SKILL</h2>
-					<ul>
-					<li><strong>C++</strong></li>
-					<li><strong>Node.js</strong></li>
-					<li><strong>CSS/HTML</strong></li>
-					<li><strong>Cocos2d-html5/Chipmunk</strong></li>
-					<li><strong>Photoshop</strong></li>
-					</ul>
-				</p>
-            </div>
-			<div class="clear"></div>
-		</div><!-- end div #about -->
+		
+		<!-- Navigate Bar-->
+		<!--
+		<nav class='navbar navbar-default navbar-fixed-top' width='10%'>
+			<div class='container'>
+				<ul class="nav nav-pills nav-stacked" style='padding:0.5%'>
+					<li role="presentation"><a href="#Profile">Profile</a></li>
+					<li role="presentation"><a href="#Works">Works</a></li>
+					<li role="presentation"><a href="#Projects">Projects</a></li>
+					<li role="presentation"><a href="#Contact">Contact</a></li>
+				</ul>	
+			</div>
+		</nav>
+		
+		<!-- Profile-->
+		<div id='Profile'>
+			<h1>.Profile</h1>
+			<hr>
+			<div class='row' ng-controller="ProfileContaoller">
+				<div class='col-md-8'>
+					<div class='row'>
+						<div class='col-md-5'>
+							<h1 class='text-center'ng-bind='profile.name'></h1>
+							<h4 class='text-center' ng-bind='profile.info'></h4>
+						</div>
+						<img class='col-md-7' src="images/my_picture.jpg" alt="my pic">
+					</div>
+					
+					<p ng-bind='profile.introduction'></p>
+				</div>
+				<div class='col-md-4'>
+					<div ng-repeat='skill in skills'>
+						<strong ng-bind='skill.name'></strong>
+						<progressbar class="progress-striped active" type='{{skill.type}}' value="skill.level"> </progressbar>
+					</div>
+				</div>	
+			</div>	
+		</div>
+		
+		
+		<!-- Works-->
+		<div id='Works'>
+			<hr>
+			<h2>.Works</h2>
+			<div ng-controller='WorkController' >
+				<accordion close-others='oneAtATime' >
+					<accordion-group class='panel panel-primary' ng-repeat="work in works" is-open="$first">
+						<accordion-heading><h4 ng-bind='work.name' style='font-size:120%'></h4></accordion-heading>
+						<div class='row'>
+							<div class='col-md-5'>
+								<carousel interval="myInterval">
+									<slide ng-repeat="imagesURL in work.imagesURLs">
+										<img class='img-thumbnail'ng-src="{{imagesURL}}" style="margin:auto;">
+									</slide>
+								</carousel>
+							</div>
+							<div class='col-md-7'>
+								<div class='container-fluid'>
+									<h4><span class='label label-info'>Introduction</span><h4>
+									<p ng-bind='work.detail'></p>
+								</div>
+								<div class='row'>
+									<ul class='col-md-7 list-group' ng-show='work.tasks'>
+										<span class='label label-success'>Task</span>
+										<li class='list-group-item'ng-repeat='task in work.tasks' ng-bind='task'></li>
+									</ul>
+									<div class='col-md-5 list-group' ng-show="work.links">
+										<span class='label label-warning'>Link</span>
+										<a class='list-group-item' ng-repeat='link in work.links' href="{{link.url}}" ng-bind='link.text'></a>	
+									</div>	
+								</div>
+							</div>	
+						</div>
+					</accordion-group>
+				</accordion>
+			</div>
+		</div>
+		
 
-        <div class="clear"></div>
+		<!-- Projects -->
+		<div id='Projects'>
+			<hr>
+			<h2>.Projects</h2>
+			<div ng-controller="ProjectController">
+				<accordion>
+					<accordion-group class='panel panel-primary' ng-repeat="project in projects" is-open="$first">
+						<accordion-heading><h4 ng-bind='project.name' style='font-size:120%'></h4></accordion-heading>
+						<img ng-src="{{project.imageURL}}" class='img-thumbnail col-md-5' alt='pic'style='margin:auto'>
+						<div class='col-md-7'>
+							<div class='container-fluid'>
+								<label class='label label-info'>Introduction</label>
+								<p ng-bind='project.detail'></p>	
+							</div>
+							<div class='container-fluid'>
+								<label class='label label-success'>Task</label>
+								<div ng-repeat='task in project.tasks'>
+									<span ng-bind='task'></span>
+								</div>
+							</div>
+						</div>
+					</accordion-group>
+				</accordion>
+			</div>
+		</div>
+		
 
-<!------------------------- WORK -->
+		<!-- Contact-->
+		<div id='Contact'>
+			<hr>
+			<h2>.Contact</h2>
 
-        <div id="work">
-            <h2>.Work</h2>
-            <div class="projectsContainer">
-                <div id="project" class="item_details">
-                    <div class="slide_inner"></div>
-                	<div class="next_slide">&nbsp;</div>
-                    <div class="prev_slide">&nbsp;</div>
-<!-- WORK 1 -->
-                    <div class="prjinfo" id="iit_1">
-                        <div class="item_slider">
-                            <ul>
-                                <li class="iit_1 pic selected"><img src="images/projects/remotesystem.jpg" alt="登录页面" /></li>
-                                <li class="iit_1 pic selected"><img src="images/projects/login.jpg" alt="登录页面" /></li>
-                                <li class="iit_1 pic"><img src="images/projects/control.jpg" alt="控制页面" /></li>
-                                <li class="iit_1 pic"><img src="images/projects/cellphoneapp.jpg" alt="APP 界面" /></li>
-                            </ul> 
-                        </div>
-                        <div class="item_text">
-                            <h3>智能家居地暖远程监控系统</h3>
-                            <div class="clear"></div>
-                            <h4>简介:</h4>
-                            <div class="clear"></div>
-                            <p>服务于智能家居地暖系统中的远程监控系统，包括服务器、Web应用以及手机APP，更详细的介绍请见项目经历。</p>
-                            <h4>主要工作:</h4>
-                            <ul>
-                                <li>Node.js 服务器</li>
-                                <li>Web应用</li>
-                                <li>手机APP</li>
-                                <li>C++、html与Javascript编程</li>
-                            </ul>
-                            <h5>时间: <span>2014 ~ 2015</span></h5>
-                            
-                            <a href="https://github.com/elcarim5efil/node_for_hc" title="Server Code" target="_blank" class="btn_see_it_live"><strong>Server Code</strong></a> <br /><br />
-                            <a href="https://github.com/elcarim5efil/QML_Project" title="APP Code" target="_blank" class="btn_see_it_live"><strong>APP Code</strong></a>
-                            <div class="close_item_info">&nbsp;</div>
-                        </div>
-                    </div><!-- end div #iit_1 -->
-<!-- WORK 2 -->
-                    <div class="prjinfo" id="iit_2">
-                        <div class="item_slider">
-                            <ul>
-                                <li class="iit_2 pic selected"><img src="images/projects/my2048.jpg" alt="My 2048" /></li>
-                                <li class="iit_2 pic selected"><img src="images/projects/my2048.jpg" alt="My 2048" /></li>
-                            </ul> 
-                        </div>
-                        <div class="item_text">
-                            <h3>2048</h3>
-                            <div class="clear"></div>
-                            <h4>简介:</h4>
-                            <div class="clear"></div>
-                            <p>学习HTML5动画时，尝试写的2048游戏，主要是练习使用CSS3的动画效果。
-                            </p>
-                            <h4>主要工作:</h4>
-                            <ul>
-                                <li>HTML5/CSS3</li>
-                                <li>Javascript</li>
-                            </ul>
-                            <h5>时间: <span>2015</span></h5>
-                            <a href="./projects/my2048/my2048.html" title="2048" target="_blank" class="btn_see_it_live"><strong>Have a try<strong></a>
-                            <div class="close_item_info">&nbsp;</div>
-                            
-                        </div>
-                    </div><!-- end div #iit_2 -->
-<!-- WORK 3 -->         
-                    <div class="prjinfo" id="iit_3">
-                        <div class="item_slider">
-                            <ul>
-                                <li class="iit_3 pic selected"><img src="images/projects/dumbsoccer.jpg" alt="Dumb Soccer" /></li>
-                                <li class="iit_3 pic"><img src="images/projects/dumbsoccer.jpg" alt="Dumb Soccer" /></li>
-                            </ul> 
-                        </div>
-                        <div class="item_text">
-                            <h3>Dumb Soccer</h3>
-                            <div class="clear"></div>
-                            <h4>简介:</h4>
-                            <div class="clear"></div>
-                            <p>与同学合作的一个网页小游戏，参考了一个名为“Soccer Physics”的小游戏，是Cocos2d-html5 + Chipmunk游戏开发的试水作品。目前正在开发中，并将使用Node.js的Pomelo实现双人联机对战模式。
-                            </p>
-                            <h4>主要工作:</h4>
-                            <ul>
-                                <li>游戏设计</li>
-                                <li>HTML/CSS</li>
-                                <li>Cocos2D-html5/Chiomunk</li>
-                                <li>Node.js/Pomelo</li>
-                            </ul>
-                            <h5>时间: <span>2015</span></h5>
-                            <a href="./projects/DumbSoccer/DumbSoccer.html" title="DumbSoccer" target="_blank" class="btn_see_it_live"><strong>Give it a try<strong></a>
-                            </br></br><p><span>
-                                加载时间较长，请耐心等候</span>
-                            </p>
-                            <div class="close_item_info">&nbsp;</div>
-                            
-                        </div>
-                    </div><!-- end div #iit_3 -->
-<!-- WORK 4 -->     
-                    <div class="prjinfo" id="iit_4">
-                        <div class="item_slider">
-                            <ul>
-                                <li class="iit_4 pic selected"><img src="images/projects/a_star.jpg" alt="A*" /></li>
-                                <li class="iit_4 pic selected"><img src="images/projects/a_star.jpg" alt="A*" /></li>
-                            </ul> 
-                        </div>
-                        <div class="item_text">
-                            <h3>A* 寻路算法测试</h3>
-                            <div class="clear"></div>
-                            <h4>简介:</h4>
-                            <div class="clear"></div>
-                            <p>利用Javascript实现A*寻路算法，并使用Canvas将其寻路结果显示出来.
-                            </p>
-                            <h4>主要工作:</h4>
-                            <ul>
-                                <li>算法实现</li>
-                                <li>HTML/CSS</li>>
-                            </ul>
-                            <h5>时间: <span>2014</span></h5>
-                            <a href="./projects/a_star/a_star.html" title="A* Star Path Algorithm Display" target="_blank" class="btn_see_it_live"><strong>Have a look</strong></a>
-                            <div class="close_item_info">&nbsp;</div>
-                            
-                        </div>
-                    </div><!-- end div #iit_4 -->
-<!-- WORK 5 -->     
-                    <div class="prjinfo" id="iit_5">
-                        <div class="item_slider">
-                            <ul>
-                                <li class="iit_5 pic selected"><img src="images/projects/poster_1.jpg" alt="My Work 5" /></li>
-                                <li class="iit_5 pic"><img src="images/projects/poster_2.jpg" alt="My Work 5" /></li>
-                                <li class="iit_5 pic"><img src="images/projects/poster_3.jpg" alt="My Work 5" /></li>
-                                <li class="iit_5 pic"><img src="images/projects/poster_4.jpg" alt="My Work 5" /></li>
-                                <li class="iit_5 pic"><img src="images/projects/poster_5.jpg" alt="My Work 5" /></li>
-                                <li class="iit_5 pic"><img src="images/projects/poster_6.jpg" alt="My Work 5" /></li>
-                            </ul> 
-                        </div>
-                        <div class="item_text">
-                            <h3>海报设计集</h3>
-                            <div class="clear"></div>
-                            <h4>简介:</h4>
-                            <div class="clear"></div>
-                            <p>这些是在本科时期所做的海报设计,海报多数是关于校红十字会及机械学院学生会所举办的活动,此外还有一些帮朋友所设计的海报.
-                            </p>
-                            <h4>主要职责:</h4>
-                            <ul>
-                                <li>创意设计</li>
-                                <li>Photoshop海报制作</li>
-                            </ul>
-                            <h5>时间: <span>2009~2013</span></h5>                    
-                        </div>
-                    </div><!-- end div #iit_5 -->
-<!-- WORK 6 -->     
-                    <div class="prjinfo" id="iit_6">
-                        <div class="item_slider">
-                            <ul>
-                                <li class="iit_6 pic selected"><img src="images/projects/slide_w1_1.jpg" alt="My Work 6" /></li>
-                                <li class="iit_6 pic"><img src="images/projects/slide_w1_1.jpg" alt="My Work 6" /></li>
-                            </ul> 
-                        </div>
-                        <div class="item_text">
-                            <h3>My Work 6</h3>
-                            <div class="clear"></div>
-                            <h4>Overview:</h4>
-                            <div class="clear"></div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas convallis volutpat felis quis suscipit. Fusce suscipit auctor urna quis mattis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas convallis volutpat felis quis suscipit.
-                            </p>
-                            <h4>My Contribution:</h4>
-                            <ul>
-                                <li>Logo Design</li>
-                                <li>User Interface Design</li>
-                                <li>HTML/CSS</li>
-                                <li>Images Editing</li>
-                            </ul>
-                            <h5>时间: <span>2010</span></h5>
-                            <h5>Client: <span>Client Name</span></h5>
-                            <a href="http://www.templatesbook.com" title="My Work 6" target="_blank" class="btn_see_it_live">See it live</a>
-                            <div class="close_item_info">&nbsp;</div>
-                            
-                        </div>
-                    </div><!-- end div #iit_6 -->
-                </div><!-- end div #project -->
-                
-<!-- WORKS GRID -->
+			<div ng-controller="ContactController" class='container-fluid'>
+				<div class='container-fluid' ng-show='contacts.address'>
+					<span class='contact address'></span><a href="{{contacts.address.href}}" ng-bind='contacts.address.text'></a>
+				</div>
+				<div class='container-fluid' ng-show='contacts.phone'>
+					<span class='contact phone'></span><a href="{{contacts.phone.href}}" ng-bind='contacts.phone.text'></a>
+				</div>
+				<div class='container-fluid' ng-show='contacts.github'>
+					<span class='contact github'></span><a href="{{contacts.github.href}}" ng-bind='contacts.github.text'></a>
+				</div>
+				<div class='container-fluid' ng-show='contacts.email'>
+					<span class='contact email'></span><a href="{{contacts.email.href}}" ng-bind='contacts.email.text'></a>
+				</div>
+				<div class='container-fluid' ng-show='contacts.gmail'>
+					<span class='contact gmail'></span><a href="{{contacts.gmail.href}}" ng-bind='contacts.gmail.text'></a>
+				</div>
+				<div class='container-fluid' ng-show='contacts.twitter'>
+					<span class='contact twitter'></span><a href="{{contacts.twitter.href}}" ng-bind='contacts.twitter.text'></a>
+				</div>
+				<div class='container-fluid' ng-show='contacts.linkedin'>
+					<span class='contact linkedin'></span><a href="{{contacts.linkedin.href}}" ng-bind='contacts.linkedin.text'></a>
+				</div>
+			</div>
+		</div> 
 
-            	<div class="prjGrid">
-                	<div id="it_1" class="item" >
-                    	<img src="images/projects/thumb_remotesystem.jpg" alt="智能地暖远程控制系统" />
-                        <span class="hover">
-                        	<span class='h3'>智能地暖远程控制系统</span>
-                        </span>
-                    </div>
-                    <div id="it_2" class="item">
-                    	<img src="images/projects/thumb_my2048.jpg" alt="my2048" />
-                        <span class="hover">
-                            <span class='h3'>my2048</span>
-                        </span>
-                    </div>
-                    <div id="it_3" class="item last">
-                    	<img src="images/projects/thumb_dumbsoccer.jpg" alt="Dumb Soccer" />
-                        <span class="hover">
-                            <span class='h3'>Dumb Soccer</span>
-                        </span>
-                    </div>
-                    <div id="it_4" class="item" >
-                        <img src="images/projects/thumb_a_star.jpg" alt="A*" />
-                        <span class="hover">
-                            <span class='h3'>A*</span>
-                        </span>
-                    </div>
-                    
-                    <div id="it_5" class="item">
-                        <img src="images/projects/thumb_poster.jpg" alt="Posters" />
-                        <span class="hover">
-                            <span class='h3'>海报设计集</span>
-                        </span>
-                    </div>
-                    <!--
-                    <div id="it_6" class="item last">
-                        <img src="images/projects/thumb_w1.jpg" alt="My Work 6" />
-                        <span class="hover">
-                            <span class='h3'>My Work 6</span>
-                        </span>
-                    </div>-->
-                </div><!-- end div .prjGrid -->
-				
-            </div><!-- end div .projectsContainer -->
-          <div class="clear"></div>  
-        </div><!-- end div #work -->
-        <div class="clear"></div>
-        
-<!------------------------- PROJECTS -->
-        
-        <div id="projects">
-            <h2>.Projects</h2>
-            <div class="projectsContainer">
-<!-- PROJECT 1 -->
-                <div class="pprj">
-                    <div class="grid left">
-                        <div class="item">
-                            <img src="images/projects/FPGA.jpg" alt="高铁智能调度模拟系统" />
-                            <a class="hover" title="高铁智能调度模拟系统" target="_blank"><span class='h3'>高铁智能调度模拟系统</span></a>
-                        </div>    
-                    </div>
-                    <div class="item_text">
-                        <h3>高铁智能调度模拟系统</h3>
-                            <div class="clear"></div>
-                            <h4>主要工作</h4>
-                            <ul>
-                                <li>系统设计</li>
-                                <li>VerilogHDL编程</li>
-                                <li>内存,控制器驱动开发</li>
-                                <li>VGA显示驱动开发</li>
-                                <li>控制界面设计</li>
-                                <li>系统测试</li>
-                            </ul>
-                    </div>
-                    <div class="item_text second">
-                        <h4>简介:</h4>
-                            <div class="clear"></div>
-                            <p>参加学校举办的PLD电子设计竞赛的小项目，当时的新闻热点是"723高铁事故",因此我们小组就想利用FPGA搭建一个高铁调度模拟系统。主要硬件是使用大赛配发的Cyclone III实验板。高铁运动模拟、控制算法、监控见面全部都在板上FPGA上面实现。我做负责的是监控模块的实现，这包括利用实验板上的SDRAM和VGA接口来实现界面显示，并将键盘和鼠标的驱动实现，完成整个监控部分的开发。最终的系统运行效果是，通过显示器、鼠标和键盘能够监控所有高速列车的运行信息，高速列车的制动、调度则由FPGA内部的控制算法实现。
-                            </p>
-                            <h5>时间: <span>2011</span></h5>
-                    </div>
-                </div><!-- end div .pprj 1 -->
-<!-- PROJECT 2 -->
-                <div class="pprj">
-                    <div class="grid left">
-                        <div class="item">
-                            <img src="images/projects/nails.jpg" alt="自动锁丝机" />
-                            <a class="hover" title="Project Name 2" target="_blank"><span class='h3'>自动锁丝机</span></a>
-                        </div>    
-                    </div>
-                    <div class="item_text">
-                        <h3>自动锁丝机</h3>
-                            <div class="clear"></div>
-                            <h4>主要工作:</h4>
-                            <ul>
-                                <li>锁丝路径规划算法设计与实现</li>
-                                <li>ST语言编程</li>
-                                <li>控制界面设计与实现</li>
-                            </ul>
-                    </div>
-                    <div class="item_text second">
-                        <h4>简介:</h4>
-                            <div class="clear"></div>
-                            <p>
-                            整个项目主要工作是为自动锁丝机编写PLC控制程序、人机界面以及锁丝路径规划程序。我所负责的是人机界面的设计和实现，以及利用ST语言开发路径规划算法。
-                            </p>
-                            <h5>时间: <span>2012</span></h5>
-                    </div>
-                </div><!-- end div .pprj 2 -->
-
-<!-- PROJECT 3 -->
-                <div class="pprj">
-                    <div class="grid left">
-                        <div class="item">
-                            <img src="images/projects/pad.jpg" alt="智能照明管理系统中的控制平板" />
-                            <a class="hover" title="Project Name 2" target="_blank"><span class='h3'>智能照明管理系统中的控制平板</span></a>
-                        </div>    
-                    </div>
-                    <div class="item_text">
-                        <h3>智能照明管理系统中的控制平板</h3>
-                            <div class="clear"></div>
-                            <h4>主要工作:</h4>
-                            <ul>
-                                <li>基于Qt的控制平板系统软件设计</li>
-                                <li>基于AM3359工业级控制平板系统设计</li>
-                                <li>Embedded-Linux系统移植</li>
-                                <li>驱动移植与调试</li>
-                            </ul>
-                    </div>
-                    <div class="item_text second">
-                        <h4>简介:</h4>
-                            <div class="clear"></div>
-                            <p>
-                            该控制平板作为智能照明管理系统的现场管理控制设备，因此需要为其定制软件系统。这是我首次使用Embedded-Linux系统并在其上利用Qt开发软件。该软件使用多进程实现，前台进程是操作界面，后台进程则是数据通信进程，负责对下层的照明设备控制器进行数据数据并将数据返回到上层的总服务器。软件使用Sqlite进行数据存储和管理，利用TCP Socket实现网络通信。
-                            </p>
-                            <h5>时间: <span>2013</span></h5>
-                    </div>
-                </div><!-- end div .pprj 3 -->
-
-<!-- PROJECT 4 -->
-                <div class="pprj">
-                    <div class="grid left">
-                        <div class="item">
-                            <img src="images/projects/kl25z.jpg" alt="基于KL25Z的MP3设计" />
-                            <a class="hover" title="kl25z" target="_blank"><span class='h3'>基于KL25Z的MP3设计</span></a>
-                        </div>    
-                    </div>
-                    <div class="item_text">
-                        <h3>基于KL25Z的MP3设计</h3>
-                            <div class="clear"></div>
-                            <h4>主要工作:</h4>
-                            <ul>
-                                <li>MP3软件设计</li>
-                                <li>触控板驱动及手势检测接口开发</li>
-                                <li>uC/OS 系统移植</li>
-                            </ul>
-                            <a href="http://v.youku.com/v_show/id_XNjg4OTg5NjY4.html?from=s1.8-1-1.2" title="MP3 Player based on KL25Z" target="_blank" class="btn_see_it_live">视频</a>
-                    </div>
-                    <div class="item_text second">
-                        <h4>简介:</h4>
-                            <div class="clear"></div>
-                            <p>
-                            飞思卡尔推出的KL25Z嵌入式处理器，特色之一是拥有一个电容触摸板控制器。基于该处理器的这个特点，参考Apple iPod的触摸圈，设计一个MP3播放器。为了实现该播放器，还需要额外的音频解码模块以及功率放大模块。而我的主要任务时实现触摸手势功能，并将uC/OS成功移植。
-                            </p>
-                            <h5>时间: <span>2013</span></h5>
-                    </div>
-                </div><!-- end div .pprj 4 -->
-
-
-<!-- PROJECT 5 -->
-                <div class="pprj">
-                    <div class="grid left">
-                        <div class="item">
-                            <img src="images/projects/remote_system_thumb.jpg" alt="Project Name 2" />
-                            <a class="hover" title="家庭智能地暖远程监控系统" target="_blank"><span class='h3'>家庭智能地暖远程监控系统</span></a>
-                        </div>    
-                    </div>
-                    <div class="item_text">
-                        <h3>家庭智能地暖远程监控系统</h3>
-                            <div class="clear"></div>
-                            <h4>主要工作:</h4>
-                            <ul>
-                                <li>系统设计</li>
-                                <li>基于QML的手机客户端APP开发</li>
-                                <li>基于Node.js的服务器开发</li>
-                                <li>Web页面开发</li>
-                            </ul>
-                    </div>
-                    <div class="item_text second">
-                        <h4>简介:</h4>
-                            <div class="clear"></div>
-                            <p>
-                            这个系统为智能家居地暖系统提供远程监控服务。系统中的服务器使用Node.js进行开发，并以C/S和B/S混合模式实现，因此用户能够使用web页面或手机APP访问。web页面使用html进行开发，并使用到了jQuery，目前正准备使用AngularJS更新Web页面的实现方式。手机APP则是基于QML（Qt下的一种UI开发语言）进行开发，为了降低跨平台APP开发的难度。开始时项目只有我一人，因此所选用的工具都是较为轻量、可移植性强的，为的就是降低开发难度，缩短开始时间。直到最近，有更多人加入到项目中，因此逐步使用新的技术更新原来的设计，以提高系统的性能。
-                            </p>
-                            <h5>时间: <span>2014~2015</span></h5>
-                    </div>
-                </div><!-- end div .pprj 5 -->
-
-            </div><!-- end div .projectsContainer -->
-            <div class="clear"></div>
-        </div><!-- end div #projects -->
-
-        <div class="clear"></div>
-<!------------------------- CONTACT -->
-        <div id="contact" class="">
-            <h2>.Contact</h2>
-            <div class="clear"></div>
-            <div class="contactContainer" style="visibility:hidden">
-                <h3>Get in touch:</h3>
-            	<div class="contact" >
-                    <form action="#" method="post" id="contactForm">
-                    <ul>
-                    <li>
-                    <label for="name">Name:</label>
-                    <input type="text" name="name" value="" id="name" />
-                    </li>
-                    <li>
-                    <label for="email">Email:</label>
-                    <input type="text" name="email" value="" id="email" />
-                    </li>
-                    <li>
-                    <label for="tele">Telephone:</label>
-                    <input type="text" name="tele" value="" id="tele" />
-                    </li>
-                    <li class="special" style="display: none;">
-                    <label for="last">Don't fill this in:</label>
-                    <input type="text" name="last" value="" id="last" />
-                    </li>
-                    <li>
-                    <label for="message">Message:</label><textarea rows="5" name="message"></textarea>
-                    </li>
-                    <li class="submitbutton">
-                    <input type="submit" class="btn" value="Send Message" />
-                    </li>
-                    </ul>
-                    </form>
-                </div>
-                <div class="message"><div id="alert"></div></div>
-				<p style="margin-top: 30px;">@Copyright 2011-2012 <a href="http://www.tempaltesbook.com">Templatesbook.com</a> | Developed&Designed by <a href="http://www.mihaibalea.info">Mihai Balea</a> | <a href="http://www.arownd.net">Blog</a></p>
-            </div><!-- end div .contactContainer -->
-            <div class="contact_social grid">
-                <span><span class="address">&nbsp;</span>Jiangsu Nanjing</span>
-                <div class="clear"></div>
-
-                <span><span class="phone">&nbsp;</span>+86-1806161****</span>
-                <div class="clear"></div>
-                
-                <span><a href="mailto:elcarim5efil@aliyun.com" class="email"></a>&nbsp;elcarim5efil@aliyun.com</span>
-                <div class="clear"></div>
-
-                <span><a href="mailto:elcarim5efil@aliyun.com" class="gmail"></a>&nbsp;elcarim5efil@gmail.com</span>
-                <div class="clear"></div>
-
-                </span>github.com/elcarim5efil</span><a href="http://www.github.com/elcarim5efil" class="github"></a>
-                <div class="clear"></div>
-                
-            </div><!-- end div .contact_social -->
-            <div class="clear"></div>
-			
-			
-           <div id="btn_top"></div> 
-        </div><!-- end div #contact -->
-    </div><!-- end div #container -->
-</div><!-- end div #wrapper -->
-
-<script type='text/javascript'>
-    QueryLoader.init();
-</script>
-
+		<hr>
+		<footer class='footer'>
+			<div class="container">
+				<p class="text-muted">By Elcarim 2015</p>
+			</div>
+		</footer>
+	</div>
 </body>
+
 </html>

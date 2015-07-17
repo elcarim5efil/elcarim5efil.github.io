@@ -20,7 +20,12 @@ time, mark, audio, video {
     vertical-align: baseline;
 }
 
-
+.container {
+    width:80%;
+}
+/*                                  SIDEBAR
+ ___________________________________________
+ */
 #sidebar li a{
 	color:#F0F0F0;
 }

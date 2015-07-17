@@ -7,25 +7,25 @@ profileData.profile = {
 };
 profileData.skills = [
 		{	name: "JavaScript",
-			level: 90
+			level: 9
 		},
 		{	name: "HTML/CSS",
-			level: 86
+			level: 8
 		},
 		{	name: "C++",
-			level: 90
+			level: 9
 		},
 		{	name: "Photoshop",
-			level: 86
+			level: 9
 		},
 		{	name: "cocos2d-html5/chipmunk",
-			level: 64
+			level: 7
 		},
 		{	name: "Node.js",
-			level: 80
+			level: 8
 		},
 		{	name: "AngularJS",
-			level: 70
+			level: 7
 		}
 ];
 
@@ -166,20 +166,25 @@ profileData.projects = [
 		}
 ];
 
-profileData.contacts = {
-		address: {	text: "Jiangsu Nanjing",
-					href: ""
+profileData.contacts = [
+		{	name: "address",
+			text: "Jiangsu Nanjing",
+			href: ""
 		},
-		phone: {	text: "+86-1806161****",
-					href: ""
+		{	name: "phone",
+			text: "+86-1806161****",
+			href: ""
 		},
-		github: {	text: "github.com/elcarim5efil",
-					href: "http://www.github.com/elcarim5efil"
+		{	name: "github",
+			text: "github.com/elcarim5efil",
+			href: "http://www.github.com/elcarim5efil"
 		},
-		email: {	text: "elcarim5efil@aliyun.com",
-					href: "mailto:elcarim5efil@aliyun.com"
+		{	name: "email",
+			text: "elcarim5efil@aliyun.com",
+			href: "mailto:elcarim5efil@aliyun.com"
 		},
-		gmail: {	text: "elcarim5efil@gmail.com",
-					href: "mailto:elcarim5efil@gmail.com"
-		},
-};
+		{	name: "gmail",
+			text: "elcarim5efil@gmail.com",
+			href: "mailto:elcarim5efil@gmail.com"
+		}
+];

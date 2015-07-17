@@ -1,0 +1,1 @@
+var app = angular.module('myProfile',['ui.bootstrap', 'ngAnimate', 'ngTouch']);

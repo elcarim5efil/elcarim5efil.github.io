@@ -1,10 +1,20 @@
-var app = angular.module('myProfile',['ui.bootstrap', 'ngAnimate', 'ngTouch']);
+// register "NavController"
+app.controller('NavController', ['$scope', '$location', 'anchorSmoothScroll', function($scope, $location, anchorSmoothScroll){
+	$scope.menus = [
+		'Profile',
+		'Works',
+		'Projects',
+		'Contact'
+	]
+	$scope.scroll = function(index){
+		// $location.hash('work_' + index);
+		anchorSmoothScroll.scrollTo($scope.menus[index], -20);
+	}
+}])
 
 // register "SkillController"
 app.controller('ProfileContaoller', ['$scope', function($scope){
 	$scope.profile = profileData.profile;
-
-
 	$scope.skills = profileData.skills;
 	var skills = $scope.skills;
 	for(key in skills) {
@@ -19,16 +29,30 @@ app.controller('ProfileContaoller', ['$scope', function($scope){
 }])
 
 // register "WorkController"
-app.controller('WorkController', ['$scope', function($scope){
+app.controller('WorkController', ['$scope', '$location', 'anchorSmoothScroll', function($scope, $location, anchorSmoothScroll){
 	$scope.oneAtATime = true;
 	$scope.works = profileData.works;
 	$scope.myInterval = 5000;
 	$scope.$first;
+	$scope.scroll = function(index){
+		// $location.hash('work_' + index);
+		setTimeout(function(){
+			anchorSmoothScroll.scrollTo('work_' + index, -20);
+		}, 500);
+		
+	}
 }])
 
 // register "ProjectController"
-app.controller('ProjectController', ['$scope', function($scope){
+app.controller('ProjectController', ['$scope', '$location', 'anchorSmoothScroll', function($scope, $location, anchorSmoothScroll){
 	$scope.projects = profileData.projects;
+	$scope.scroll = function(index){
+		// $location.hash('project_' + index);
+		setTimeout(function(){
+			anchorSmoothScroll.scrollTo('project_' + index, -20);
+		}, 500);
+		
+	}
 }])
 
 // register "ContactController"

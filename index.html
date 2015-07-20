@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<script type="text/javascript" src= "frameworks/angular.js"></script>
 	<script type="text/javascript" src= "frameworks/angular-animate.js"></script>
+	<script type="text/javascript" src= "frameworks/angular-route.min.js"></script>
 	<script type="text/javascript" src= "frameworks/angular-touch.js"></script>
 	<script type="text/javascript" src="frameworks/ui-bootstrap-tpls-0.13.0.js"></script>
 	<script type="text/javascript" src="js/data.js" ></script>
@@ -14,7 +15,7 @@
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
 
-	<title>Elcarim</title>
+	<title>Elcarim || 吴子然</title>
 </head>
 
 <body style='background-color:#444444'>
@@ -45,7 +46,8 @@
 						<img class='col-md-7' src="images/my_picture.jpg" alt="my pic">
 					</div>
 					
-					<p ng-bind='profile.introduction'></p>
+					
+					<div ng-view></div>
 				</div>
 				<div class='col-md-4'>
 					<div ng-repeat='skill in skills'>

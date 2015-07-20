@@ -60,3 +60,10 @@ app.controller('ContactController', ['$scope', function($scope){
 	$scope.contacts = profileData.contacts;
 }])
 
+app.config(['$routeProvider', function($routeProvider){
+    $routeProvider
+		.when('/', {
+			//controller : 'RootCtrl',
+			templateUrl : 'template/introduction.html'
+		})
+}]);  

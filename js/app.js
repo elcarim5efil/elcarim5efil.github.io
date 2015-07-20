@@ -1,1 +1,1 @@
-var app = angular.module('myProfile',['ui.bootstrap', 'ngAnimate', 'ngTouch']);
+var app = angular.module('myProfile',['ui.bootstrap', 'ngAnimate', 'ngTouch', 'ngRoute']);

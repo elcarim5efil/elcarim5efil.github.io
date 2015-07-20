@@ -1,8 +1,14 @@
 var profileData = {};
 
 profileData.profile = {
-	introduction:"勤奋刻苦，善于钻研，自律严谨，有探索精神，勇于尝试新技术，能够独立完成开发，也乐意参与团队协作相互学习。自从尝试Web应用开发后一发不可收拾，爱上了JavaScript以及Node。鉴于自身爱好电子游戏，因此以JavaScript和Html5为基础，尝试开发一些小游戏。虽然作品不多，但尝试过matter.js、cocos2d-html5、chipmunk等开发工具，并有少许心得。除此以外，对服务器开发也十分热爱，目前正在学习Nginx和thttpd，打算尝试着写一个简单的http服务器，以加深对服务器开发的理解。",
-	name: "Elcarim",
+	// introduction:"勤奋刻苦，善于钻研，自律严谨，有探索精神，勇于尝试新技术，能够独立完成开发，"+
+	// 			"也乐意参与团队协作相互学习。自从尝试Web应用开发后一发不可收拾，爱上了JavaScript以及Node。"+
+	// 			"鉴于自身爱好电子游戏，因此以JavaScript和Html5为基础，尝试开发一些小游戏。"+
+	// 			"虽然作品不多，但尝试过matter.js、cocos2d-html5、chipmunk等开发工具，并有少许心得。"+
+	// 			"并在尝试为Chrome浏览器开发扩展应用，目前已实现用于登录密码记录和视频弹窗的简单扩展应用，源码请见github。"+
+	// 			"本页面使用AngularJS及Bootstrap进行开发，同时也是学习这两个工具时候的习作。"
+	// 			,
+	name: "吴子然",
 	info:'东南大学 自动化学院',
 };
 profileData.skills = [

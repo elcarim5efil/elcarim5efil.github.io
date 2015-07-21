@@ -44,7 +44,7 @@ __________________________________________________________
     float: left;
     width: 32px;
     height: 32px;
-    margin: 0 0 1%;
+    margin: 0 0 10px;
     background-color: #3353A0;
     -moz-border-radius: 16px;
     -webkit-border-radius: 16px;
@@ -87,7 +87,7 @@ __________________________________________________________
 	color:#333333;
 }
 
-.twitter :hover, .phone :hover, .gmail :hover, .linkedin :hover, .address :hover, .email :hover, .github :hover {
+.twitter:hover, .phone:hover, .gmail:hover, .linkedin:hover, .address:hover, .email:hover, .github:hover {
 	width: 32px;
     height: 32px;
     -moz-border-radius: 16px;

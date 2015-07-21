@@ -13,25 +13,25 @@ profileData.profile = {
 };
 profileData.skills = [
 		{	name: "JavaScript",
-			level: 9
+			level: 8
 		},
 		{	name: "HTML/CSS",
-			level: 8
+			level: 7
 		},
 		{	name: "C++",
-			level: 9
-		},
-		{	name: "Photoshop",
-			level: 9
-		},
-		{	name: "cocos2d-html5/chipmunk",
-			level: 7
-		},
-		{	name: "Node.js",
 			level: 8
 		},
-		{	name: "AngularJS",
+		{	name: "Photoshop",
+			level: 8
+		},
+		{	name: "cocos2d-html5/chipmunk",
+			level: 6
+		},
+		{	name: "Node.js",
 			level: 7
+		},
+		{	name: "AngularJS",
+			level: 6
 		}
 ];
 

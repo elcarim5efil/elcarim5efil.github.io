@@ -83,6 +83,19 @@ profileData.works = [
 				{	text:'在线演示', url: './projects/my2048/my2048.html'	}
 			]
 		},
+		{	name: "WebGame: Flappy Bird",
+			detail: "使用html5 canvas/JavaScript开发的flappy bird，没有使用其他框架，开发起来没有cocos2d-html5方便",
+			imagesURLs: [	
+					'images/projects/flappybird.jpg'
+			],
+			tasks: [
+				'JavaScript',
+				'HTML5/canvas'
+			],
+			links: [
+				{	text:'在线演示', url: './projects/flappybird/flap.html'	}
+			]
+		},
 		{	name: "A* 寻路算法测试",
 			detail: "利用Javascript实现A*寻路算法，并使用Canvas将其寻路结果显示出来.",
 			imagesURLs: [	

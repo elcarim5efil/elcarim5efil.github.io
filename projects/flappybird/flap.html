@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+	<img src="atlas.png" id='atlas' style='visibility:hidden' width="0" height="0">
+	<style>
+		.game_frame {
+			margin: 20px auto;
+			width: 240px;
+			height: 400px;
+		}
+		.game_box {
+		}
+	</style>
+</head>
+<body>
+	<div class='game_frame'>
+		<canvas class='game_box' id='game_box' name='game_box' width='240px' height='400px'></canvas>
+	</div>
+	<script src="game.js" type="text/javascript"></script>
+	<script>
+		window.onload = function(){
+			console.log('start');
+			World.init();
+		}
+	</script>
+</body>
+</html>

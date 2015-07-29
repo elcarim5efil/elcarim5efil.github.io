@@ -93,7 +93,8 @@ profileData.works = [
 				'HTML5/canvas'
 			],
 			links: [
-				{	text:'在线演示', url: './projects/flappybird/flap.html'	}
+				{	text:'在线演示', url: './projects/flappybird/flap.html'	},
+				{	text:'开发日记', url: 'http://www.cnblogs.com/elcarim5efil/p/4684605.html'	}
 			]
 		},
 		{	name: "A* 寻路算法测试",

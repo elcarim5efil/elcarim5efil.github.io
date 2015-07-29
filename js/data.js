@@ -205,5 +205,9 @@ profileData.contacts = [
 		{	name: "gmail",
 			text: "elcarim5efil@gmail.com",
 			href: "mailto:elcarim5efil@gmail.com"
+		},
+		{	name: "cnblog",
+			text: "个人技术博客",
+			href: "http://www.cnblogs.com/elcarim5efil/"
 		}
 ];

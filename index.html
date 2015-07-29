@@ -130,10 +130,9 @@
 			<hr>
 			<h2>.Contact</h2>
 
-			<div ng-controller="ContactController" class='container-fluid'>
-
-				<div class='container-fluid' ng-repeat='item in contacts' ng-show='item'>
-					<span class='contact {{item.name}}'></span><a href="{{item.href}}" ng-bind='item.text'></a>
+			<div ng-controller="ContactController" class='container'>
+				<div class='container ' ng-repeat='item in contacts' ng-show='item'>
+					<span class='col-md-3 contact {{item.name}}'></span><a class="col-md-7" href="{{item.href}}" ng-bind='item.text'></a>
 				</div>
 			</div>
 		</div> 

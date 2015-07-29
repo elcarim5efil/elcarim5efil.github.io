@@ -44,24 +44,28 @@ __________________________________________________________
     float: left;
     width: 32px;
     height: 32px;
-    margin: 0 0 10px;
+    margin: 5px 0 5px;
     background-color: #3353A0;
     -moz-border-radius: 16px;
     -webkit-border-radius: 16px;
     border-radius: 16px;
+    text-align: center center;
 } 
 
 .github {
     background-position: 0px 0;
-    margin-right: 10px; }
+    margin-right: 10px;
+}
 
 .twitter {
     background-position: -32px 0;
-    margin-right: 10px; }
+    margin-right: 10px; 
+}
 
 .linkedin {
     background-position: -64px 0;
-    margin-right: 10px; }
+    margin-right: 10px; 
+}
 
 .gmail { 
     background-position: -96px 0; 
@@ -82,12 +86,16 @@ __________________________________________________________
     background-position: -160px 0;
     margin-right: 10px;
 }
-
-.twitter+a, .phone+a, .gmail+a, .linkedin+a, .address+a, .email+a, .github+a {
+.cnblog {
+    background-position: -300px 0;
+    margin-right: 10px
+}
+.twitter+a, .phone+a, .gmail+a, .linkedin+a, .address+a, .email+a, .github+a, .cnblog+a {
+    margin: 10px;
 	color:#333333;
 }
 
-.twitter:hover, .phone:hover, .gmail:hover, .linkedin:hover, .address:hover, .email:hover, .github:hover {
+.twitter:hover, .phone:hover, .gmail:hover, .linkedin:hover, .address:hover, .email:hover, .github:hover, .cnblog:hover {
 	width: 32px;
     height: 32px;
     -moz-border-radius: 16px;

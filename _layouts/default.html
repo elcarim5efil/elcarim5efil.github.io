@@ -1,48 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myProfile" >
 <head>
-    <!--
-    * Author:         BeiYuu
-    -->
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
-    <meta name="author" content="BieYuu" />
-    <meta name="renderer" content="webkit">
-    <meta name="description" content="BeiYuu's Blog" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="/css/default.css" type="text/css" />
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="{{ site.feed }}" />
-    <script src="/js/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src= "/frameworks/angular.js"></script>
+    <script type="text/javascript" src= "/frameworks/angular-animate.js"></script>
+    <script type="text/javascript" src= "/frameworks/angular-route.min.js"></script>
+    <script type="text/javascript" src= "/frameworks/angular-touch.js"></script>
+    <script type="text/javascript" src="/frameworks/ui-bootstrap-tpls-0.13.0.js"></script>
+    <script type="text/javascript" src="/js/data.js" ></script>
+    <script type="text/javascript" src= "/js/app.js"></script>
+    <script type="text/javascript" src="/js/services.js"></script>
+    <script type="text/javascript" src= "/js/controller.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
 </head>
-<body>
 
-    <div class="home-menu">
-        <div class="home-icon-con">
-            <a class="home-menu-icon" href="/">BeiYuu</a>
-            <a class="home-follow" href="#" title="Contact Me">+</a>
-        </div>
-        <div class="home-contact">
-            <a href="http://weibo.com/beiyuu/" target="_blank" style="margin-left:-5px;"><img src="http://www.weibo.com/favicon.ico" alt="" width="25"/></a>
-            <a href="http://www.douban.com/people/beiyuu/" target="_blank" style="text-align:center;"><img src="http://www.douban.com/favicon.ico" alt="" width="22"/></a>
-            <a href="http://instagram.com/beiyuu/" target="_blank" style="text-align:right"><img src="http://d36xtkk24g8jdx.cloudfront.net/bluebar/00c6602/images/ico/favicon.ico" alt="" width="22"/></a>
-        </div>
-    </div>
+<body style='background-color:#444444'>
+  <header>
+    
+  </header>
+  <!-- Navigate Bar-->
+  <div class="col-sm-3 col-md-2 sidebar" id='sidebar' ng-controller="NavController">
+    <ul class="nav nav-pills nav-stacked affix">
+      <li role="presentation" ng-repeat='menu in menus'><a href="#{{menu}}" ng-click="scroll($index)" ng-bind='menu'></a></li>
+    </ul>
+  </div>
 
+  <div class='cotainer' style='width:80%; margin:auto; padding:10%; background-color:#FFFFFF'>    
+    
     {{ content }}
 
-    <script type="text/javascript">
-        $(function(){
-            $('.home-follow').click(function(e){
-                e.preventDefault();
-
-                if($('.home-contact').is(':visible')){
-                    $('.home-contact').slideUp(100);
-                }else{
-                    $('.home-contact').slideDown(100);
-                }
-            });
-        })
-    </script>
+    <hr>
+    <footer class='footer'>
+      <div class="container">
+        <p class="text-muted text-right">By Elcarim 2015</p>
+      </div>
+    </footer>
+  </div>
 </body>
+
 </html>

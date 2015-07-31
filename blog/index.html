@@ -1,0 +1,37 @@
+---
+layout: default
+---
+<div id='Blog'>
+  <hr>
+    <h2>.Blog </h2>
+
+    <div class='list-group'>
+    {% for post in paginator.posts %}
+        <a class='list-group-item' href='{{ post.url }}'>
+            <h2 class='list-group-item-heading'>
+                {{ post.title }}
+                <small>{{ post.date }}</small>
+            </h2>
+            <p class="list-group-item-text">">{{ post.description }}</p>
+        </a>
+    {% endfor %}
+    </div>
+
+    {% if paginator.previous_page %}
+        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}"上一页</a>
+    {% endif %}
+    
+    {% for page in (1..paginator.total_pages) %}
+        {% if page == paginator.page %}
+          <span class="active">{{ page }}</span>
+        {% elsif page == 1 %}
+          <a href="{{ '/index.html' | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
+        {% else %}
+          <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+        {% endif %}
+    {% endfor %}
+
+    {% if paginator.next_page %}
+        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">下一页</a>
+    {% endif %}
+</div> 

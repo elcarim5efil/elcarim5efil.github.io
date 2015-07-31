@@ -1,6 +1,6 @@
 ---
 layout: post
-title: jQuery 源码分析（3） 整体结构
+title: jQuery 源码分析（3）jQuery.fn上的方法
 description: 分析jQuery.fn上的部分工具方法
 category: blog
 ---

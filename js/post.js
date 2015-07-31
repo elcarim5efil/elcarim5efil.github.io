@@ -23,7 +23,7 @@ $(document).ready(function(){
 
     $('pre').addClass('prettyprint linenums'); //添加Google code Hight需要的class
 
-    $('.entry a').each(function(index,element){
+    $('.container a').each(function(index,element){
         var href = $(this).attr('href');
         if(href){
             if(href.indexOf('#') == 0){
@@ -44,7 +44,7 @@ $(document).ready(function(){
             var h3 = [];
             var h2index = 0;
 
-            $.each($('.entry h2, .entry h3'),function(index,item){
+            $.each($('.container h2, .container h3'),function(index,item){
                 if(item.tagName.toLowerCase() == 'h2'){
                     var h2item = {};
                     h2item.name = $(item).text();
@@ -119,20 +119,22 @@ $(document).ready(function(){
             };
         })();
 
-        if($('.entry h2').length > 2 && !isMobile.any() && !ie6){
+        if($('.container h2').length > 2 && !isMobile.any() && !ie6){
 
             genIndex();
 
             $(window).load(function(){
                 var scrollTop = [];
+                
+                var menuIndexTop = $('#menuIndex').offset().top = window.screen.availHeight * 0.05;
+                var menuIndexLeft = $('#menuIndex').offset().left = window.screen.availWidth - $('#menuIndex').width() * 1.3;
+
                 $.each($('#menuIndex li a'),function(index,item){
                     var selector = $(item).attr('data-id') ? '#'+$(item).attr('data-id') : 'h1'
                     var top = $(selector).offset().top;
+                    console.log(top);
                     scrollTop.push(top);
                 });
-
-                var menuIndexTop = $('#menuIndex').offset().top;
-                var menuIndexLeft = $('#menuIndex').offset().left;
 
                 $(window).scroll(function(){
                     waitForFinalEvent(function(){
@@ -176,8 +178,8 @@ $(document).ready(function(){
                         ,left:0
                     });
 
-                    menuIndexTop = $('#menuIndex').offset().top;
-                    menuIndexLeft = $('#menuIndex').offset().left;
+                    menuIndexTop = $('#menuIndex').offset().top = window.screen.availHeight * 0.05;
+                    menuIndexLeft = $('#menuIndex').offset().left = window.screen.availWidth - $('#menuIndex').width() * 1.3;
 
                     $(window).trigger('scroll')
                     $('#menuIndex').css('max-height',$(window).height()-80);

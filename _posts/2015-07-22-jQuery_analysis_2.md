@@ -1,6 +1,6 @@
 ---
 layout: post
-title: jQuery 源码分析（2） 整体结构
+title: jQuery 源码分析（2） jQuery.fn.init
 description: 分析jQuery.fn.init的源码
 category: blog
 ---

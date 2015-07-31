@@ -99,7 +99,7 @@ title: Home
 
 <div id='Blog'>
   <hr>
-  	<h2>.Blog <a href='/blog/index.html'><span style='float:right'class='label label-primary'>more&nbsp;<span class="badge">{{ site.posts | size }}</span></span></a> </h2>
+  	<h2>.Blog <a href='/blog/index.html'><span style='float:right;' class='label label-primary'>more&nbsp;<span class="badge">{{ site.posts | size }}</span></span></a> </h2>
 
     <div class='list-group'>
 <!-- 		{% assign post = site.posts.first %}
@@ -108,11 +108,11 @@ title: Home
  -->
  	{% for post in site.posts offset: 0 limit: 5  %}
         <a class='list-group-item' href='{{ post.url }}'>
-            <h2 class='list-group-item-heading'>
-                {{ post.title }}
-                <small>{{ post.date }}</small>
-            </h2>
-            <p class="list-group-item-text">">{{ post.description }}</p>
+            <h4 class='list-group-item-heading'>
+              <strong>{{ post.title }}</strong>
+               <small class="text-right">{{ post.date | date:"%Y-%m-%d" }}</small>
+            </h4>
+            <small>--{{ post.description }}</small>
         </a>
     {% endfor %}
     </div>

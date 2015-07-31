@@ -1,6 +1,6 @@
 ---
 layout: post
-title: jQuery 源码分析（4） 整体结构
+title: jQuery 源码分析（4） jQuery.extend
 description: 分析jQuery.extend方法
 category: blog
 ---

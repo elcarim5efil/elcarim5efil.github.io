@@ -1,7 +1,7 @@
 ---
 layout: post
 title: jQuery 源码分析（7）Sizzle
-description: 分析jQuery.extend方法
+description: 分析Sizzle 入口源码
 category: blog
 ---
 

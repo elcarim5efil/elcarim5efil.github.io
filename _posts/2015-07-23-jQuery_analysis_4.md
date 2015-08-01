@@ -82,7 +82,7 @@ category: blog
 
 ##总结
 
-通过jQuery.extend方法可以为jQuery或其他对象进行属性扩展操作。对于纯对象可选择执行深拷贝，对于数组是一定执行深拷贝。
-jQuery的大部分功能都通过此方法进行扩展，也可以此为jQuery扩展插件。
-jQuery.extend({}),此时target为 jQuery.prototype,为jQuery扩展静态属性或方法,jQuery内部也是以此方法进行。
-jQuery().extend({}),此时target为jQuery对象本身,给jQuery对象扩展属性或方法。
+- 通过jQuery.extend方法可以为jQuery或其他对象进行属性扩展操作。对于纯对象可选择执行深拷贝，对于数组是一定执行深拷贝。
+- jQuery的大部分功能都通过此方法进行扩展，也可以此为jQuery扩展插件。
+- jQuery.extend({}),此时target为 jQuery.prototype,为jQuery扩展静态属性或方法,jQuery内部也是以此方法进行。
+- jQuery().extend({}),此时target为jQuery对象本身,给jQuery对象扩展属性或方法。

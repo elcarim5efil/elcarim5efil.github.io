@@ -1,6 +1,6 @@
 ---
 layout: post
-title: jQuery 源码分析（1） 整体结构
+title: jQuery 源码分析（1） 入口源码
 description: 分析jQuery的入口源码
 category: blog
 ---

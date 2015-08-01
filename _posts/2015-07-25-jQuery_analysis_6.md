@@ -222,7 +222,7 @@ category: blog
 
 ##总结
 
-* jQuery.extend在进行扩展的时候，是使用到了深拷贝，这是教科书式的用法，对Object和Array对象进行递归合并，将其中所有的属性都作拷贝。这样做的原因是在JavaScript里，对右值为Object和Array的赋值操作是执行引用而非拷贝，因此必须遍历Object和Array的属性以实现深拷贝；
-* 方法重载的技巧再次出现，如jQuery.proxy。重载的实现实际上要对参数类型、参数数量进行判断，以进行不同的处理；
-* 为了绑定函数方法的上下文环境，我们可以使用jQuery.proxy，而.proxy的实现使用到了function.apply(conext, args)；
-* jQuery.grep的实现也是比较巧妙，添加一个形参invert来进行反向选择，即可以利用一个callback作出双向选择，这也是一个简单而巧妙的技巧。
+- jQuery.extend在进行扩展的时候，是使用到了深拷贝，这是教科书式的用法，对Object和Array对象进行递归合并，将其中所有的属性都作拷贝。这样做的原因是在JavaScript里，对右值为Object和Array的赋值操作是执行引用而非拷贝，因此必须遍历Object和Array的属性以实现深拷贝；
+- 方法重载的技巧再次出现，如jQuery.proxy。重载的实现实际上要对参数类型、参数数量进行判断，以进行不同的处理；
+- 为了绑定函数方法的上下文环境，我们可以使用jQuery.proxy，而.proxy的实现使用到了function.apply(conext, args)；
+- jQuery.grep的实现也是比较巧妙，添加一个形参invert来进行反向选择，即可以利用一个callback作出双向选择，这也是一个简单而巧妙的技巧。

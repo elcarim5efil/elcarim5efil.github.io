@@ -57,6 +57,8 @@ $(document).ready(function(){
 		floatMenu.css('max-height',$(window).height()-80)
 				.delegate('a','click',function(e){
                     e.preventDefault();
+                    console.log(this);
+                    var selec = this.hash || '#' + this.id;
                     $('body, html').animate({ scrollTop: $(this.hash).offset().top - 10 }, 400, 'swing');
                 });
 

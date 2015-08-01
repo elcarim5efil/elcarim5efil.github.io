@@ -156,9 +156,9 @@ jQuery使用的是Sizzle这个选择器引擎，这个引擎以其高速著称�
 	     }
 	}
 
-* assert函数建立一个div节点，将这个div节点传递给回调函数。
-* div节点在assert函数结束时会被删除，此时注意要删除由回调函数创建的子节点，并将div赋值null以让GC回收。
-* 回调函数利用新建的div节点作为根节点，在这个根节点上创建一些测试用的节点进行测试。
+- assert函数建立一个div节点，将这个div节点传递给回调函数。
+- div节点在assert函数结束时会被删除，此时注意要删除由回调函数创建的子节点，并将div赋值null以让GC回收。
+- 回调函数利用新建的div节点作为根节点，在这个根节点上创建一些测试用的节点进行测试。
 
 ###一个bug测试例子
 
@@ -181,8 +181,8 @@ jQuery使用的是Sizzle这个选择器引擎，这个引擎以其高速著称�
 
 
 ##select方法
-	当无法直接使用document的原生选择器时,就会调用Sizzle.select.
-	注释里写到"A low-level selection function that works with Sizzle's compiled",这是一个低级选择器,与Sizzle.compiled协作执行.
+当无法直接使用document的原生选择器时,就会调用Sizzle.select.
+注释里写到"A low-level selection function that works with Sizzle's compiled",这是一个低级选择器,与Sizzle.compiled协作执行.
 
 	// @param selector 已去掉头尾空白的选择器字符串 
 	// @param context 执行匹配的最初的上下文（即DOM元素集合）。若context没有赋值，则取document。 
@@ -303,8 +303,8 @@ jQuery使用的是Sizzle这个选择器引擎，这个引擎以其高速著称�
 
 ##总结
 
-* 调用jQuery.find的时候实际上就调用了Sizzle。Sizzle的实现的一个最基本思路是以最快的速度完成选择器匹配，那如何才能够完成呢？对于简单不含其他关系符的选择器如（#id，tag，.class）就尽可能得直接调用document.getElementById/ .getElementByTagName/ .getElementByClassName 等原生方法。这些DOM的基本方法的运行速度是最快的。而对于词法更为复杂的选择器（包含关系符，伪类选择器），首选是调用document.querySelectorAll。QSA的速度非常快，但在不同的浏览器上其运行效果不一样，很多时候会有莫名奇妙的返回结果，因此使用前需要对浏览器进行测试，确保在确定能够使用QSA的情况下才进行这样的调用，否则就需要调用Sizzle.select进行更低层次的元素匹配；
-* select的实现相对而言比较复杂，它首先需要对选择器进行词法分析，然后根据所得到的词法标记利用sizzle.compile构造出一系列匹配器，并将这些匹配器组合成一个更大的匹配方法，最后才执行这个匹配方法；关于select的更详细具体的分析，留在日后再看；
-* 有select可以看出来，鉴于浏览器的兼容性问题，尤其是针对IE < 8的兼容性，jQuery在这方面作出了许多努力，使得代码的编写变得臃肿，执行效率也有所下降；
-* jQuery中使用的assert方法十分精妙，新建DOM节点元素作为测试根节点，然后进行节点匹配测试。要注意的是，测试完成后删除子节点，并对根节点赋值null，否则容易导致内存泄漏（IE）；
-* jQuery的选择器是使用频率最高的方法之一，因此一切效率之上。从jQuery的源码可学习到，如何在保证运行效率的前提下保证一个方法对浏览器的兼
+- 调用jQuery.find的时候实际上就调用了Sizzle。Sizzle的实现的一个最基本思路是以最快的速度完成选择器匹配，那如何才能够完成呢？对于简单不含其他关系符的选择器如（#id，tag，.class）就尽可能得直接调用document.getElementById/ .getElementByTagName/ .getElementByClassName 等原生方法。这些DOM的基本方法的运行速度是最快的。而对于词法更为复杂的选择器（包含关系符，伪类选择器），首选是调用document.querySelectorAll。QSA的速度非常快，但在不同的浏览器上其运行效果不一样，很多时候会有莫名奇妙的返回结果，因此使用前需要对浏览器进行测试，确保在确定能够使用QSA的情况下才进行这样的调用，否则就需要调用Sizzle.select进行更低层次的元素匹配；
+- select的实现相对而言比较复杂，它首先需要对选择器进行词法分析，然后根据所得到的词法标记利用sizzle.compile构造出一系列匹配器，并将这些匹配器组合成一个更大的匹配方法，最后才执行这个匹配方法；关于select的更详细具体的分析，留在日后再看；
+- 有select可以看出来，鉴于浏览器的兼容性问题，尤其是针对IE < 8的兼容性，jQuery在这方面作出了许多努力，使得代码的编写变得臃肿，执行效率也有所下降；
+- jQuery中使用的assert方法十分精妙，新建DOM节点元素作为测试根节点，然后进行节点匹配测试。要注意的是，测试完成后删除子节点，并对根节点赋值null，否则容易导致内存泄漏（IE）；
+- jQuery的选择器是使用频率最高的方法之一，因此一切效率之上。从jQuery的源码可学习到，如何在保证运行效率的前提下保证一个方法对浏览器的兼

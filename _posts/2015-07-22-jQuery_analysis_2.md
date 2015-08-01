@@ -125,21 +125,17 @@ category: blog
 		return jQuery.makeArray( selector, this );
      };
 
-##总结
-init执行过程：
-<ul>
-	<li>处理空selector，相当于返回jQuery方法接口</li>
-	<li>判断HTML字符串</li>
-		<ul>
-			<li>HTML字符或#id</li>
-			<li>单独HTML标签，创建DOM对象并插入</li>
-			<li>#id，使用document.getElementById获取DOM对象</li>
-		</ul>
-	<li>选择器表达式，使用$.find</li>
-	<li>函数，注册到ready或立即执行</li>
-	<li>DOM对象,直接返回</li>
-</ul>
+##init执行过程
+- 处理空selector，相当于返回jQuery方法接口
+	- 判断HTML字符串
+	- HTML字符或#id
+	- 单独HTML标签，创建DOM对象并插入
+	- #id，使用document.getElementById获取DOM对象
+- 选择器表达式，使用$.find
+- 函数，注册到ready或立即执行
+- DOM对象,直接返回
 
-可以看到init初始化一个jQuery对象，根据形参来搜索或建立一个DOM对象(又或者是执行jQuery.ready方法)，并将该对象返回。
-jQuery.fn.init的实现十分精明，在JavaScript中实现了方法的重载,让API调用变得更为简单方便。
-过程中有针对浏览器兼容性的处理、纯粹对象判断，用来保证运行的可靠性和稳定性，这部分十分值得研读和学习。
+##总结
+- 可以看到init初始化一个jQuery对象，根据形参来搜索或建立一个DOM对象(又或者是执行jQuery.ready方法)，并将该对象返回。
+- jQuery.fn.init的实现十分精明，在JavaScript中实现了方法的重载,让API调用变得更为简单方便。
+- 过程中有针对浏览器兼容性的处理、纯粹对象判断，用来保证运行的可靠性和稳定性，这部分十分值得研读和学习。

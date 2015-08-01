@@ -118,7 +118,7 @@ ____________________Menu Index Box
     left: 95%;
     position: fixed;
     top: 20px;
-    width: 300px;
+    width: 400px;
     transition-property: left, width;
     -moz-transition-property: left, width;
     -o-transition-property: left, width;
@@ -138,7 +138,7 @@ ____________________Menu Index Box
 }
 
 #menuIndex ul, #menuIndex li {
-    width: 300px;
+    width: 400px;
 }
 #menuIndex ul li a:hover, #menuIndex ul li.on, #menuIndex ul li a:focus{
     background: rgba(0, 160, 200, 0.5);
@@ -156,7 +156,7 @@ ____________________Menu Index Box
 }
 
 #menuIndex ul li a:hover{
-    width: 300px;
+    width: 400px;
     color:white;
 }
 

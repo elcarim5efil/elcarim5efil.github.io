@@ -103,3 +103,63 @@ __________________________________________________________
     border-radius: 16px;
     background-color: #333333;
 }
+
+/* 
+____________________Menu Index Box
+*/
+
+
+#menuIndex {
+    box-shadow: 0px 0px 1px 2px #666666; 
+    -o-box-shadow: 0px 0px 1px 2px #666666;
+    -moz-box-shadow: 0px 0px 1px 2px #666666;
+    -webkit-box-shadow: 0px 0px 1px 2px #666666;
+    background: #FFFFFF;
+    left: 95%;
+    position: fixed;
+    top: 20px;
+    width: 300px;
+    transition-property: left, width;
+    -moz-transition-property: left, width;
+    -o-transition-property: left, width;
+    -webkit-transition-property: left, width;
+    transition-duration: 0.5s, 0.5s;
+    -moz-transition-duration: 0.5s, 0.5s;
+    -o-transition-duration: 0.5s, 0.5s;
+    -webkit-transition-duration: 0.5s, 0.5s;
+}
+
+#menuIndex:hover{
+    left: 85%;
+}
+
+#menuIndex ul ul{
+    padding-left: 20px;
+}
+
+#menuIndex ul, #menuIndex li {
+    width: 300px;
+}
+#menuIndex ul li a:hover, #menuIndex ul li.on, #menuIndex ul li a:focus{
+    background: rgba(0, 160, 200, 0.5);
+    width: 3px;
+    white-space:nowrap;
+    overflow: visible;
+    transition-property: all;
+    -moz-transition-property: all;
+    -o-transition-property: all;
+    -webkit-transition-property: all;
+    transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    -webkit-transition-duration: 0.5s;
+}
+
+#menuIndex ul li a:hover{
+    width: 300px;
+    color:white;
+}
+
+#menuIndex ul li a:focus{
+    outlien: none;
+}

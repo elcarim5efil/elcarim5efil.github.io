@@ -105,6 +105,21 @@ ______________________________________________
     color:#FFFFFF;
     background-color: rgb(246,218,64);
 }
+/*
+                                Blog List
+________________________________________________
+*/
+.list-group {
+    border-radius: 0;
+    -o-border-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-color: rgba(200, 200, 200, 0.8);
+    box-shadow: 1px 1px 1px rgba(200,200,200, 0.8);
+    -o-box-shadow: 1px 1px 1px rgba(200,200,200, 0.8);
+    -moz-box-shadow: 1px 1px 1px rgba(200,200,200, 0.8);
+    -webkit-box-shadow: 1px 1px 1px rgba(200,200,200, 0.8);
+}
 
 /*                                                 CONTACT
 __________________________________________________________

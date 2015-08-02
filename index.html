@@ -2,33 +2,46 @@
 layout: default
 title: Home
 ---
-<!-- <% raw %> -->
+
 <!-- Profile-->
 <div id='Profile'>
   <h1>.Profile</h1>
   <hr>
   <div class='row' ng-controller="ProfileController">
-    <div class='col-md-8'>
-      <div class='row'>
-        <div class='col-md-5'>
-          <h1 class='text-center'ng-bind='profile.name'></h1>
-          <h4 class='text-center' ng-bind='profile.info'></h4>
-        </div>
-        <img class='col-md-7' src="images/my_picture.jpg" alt="my pic">
-      </div>
-      
-      <div ng-view></div>
-    </div>
-    <div class='col-md-4'>
-      <div ng-repeat='skill in skills'>
-        <strong ng-bind='skill.name'></strong>
-        <progressbar class="progress-striped active" type=' {{"{{ skill.type "}}}} ' max='10' value="skill.level"> </progressbar>
-      </div>
-    </div>  
-  </div>  
-</div>
-<!-- <% endraw %> -->
 
+    <!-- INFO -->
+    <div class='col-md-7 panel'>
+      <div class='panel-body row'>
+          <div class='row'>
+            <img class='col-md-6' src="images/my_picture.jpg" alt="my pic">
+            <div class='col-md-6'>
+              <h1 class='text-center'ng-bind='profile.name'></h1>
+              <h4 class='text-center' ng-bind='profile.info'></h4>
+            </div>
+          </div>
+          <div class='col-md-12'><h3 class='text-right'>Intro.</h3></div>
+          <div ng-view></div>
+          <h3 class='text-right'><a href='{{"{{profile.gitrepo"}}}}'><small><span class='label label-info'>GitHub<span class='badge' ng-bind='profile.gitnum'></span></span></small></a></h3>
+      </div>
+    </div>
+    <!-- end INFO -->
+
+    <!-- SKILLS -->
+    <div class='col-md-push-1 col-md-4 panel'>
+      <div class='panel-body'>
+        <h3 class='text-right'>Skills.</h3>
+        <div ng-repeat='skill in skills'>
+          <strong ng-bind='skill.name'></strong>
+          <progressbar class="progress-striped active" type=' {{"{{ skill.type "}}}} ' max='10' value="skill.level"> </progressbar>
+        </div>
+      </div>
+    </div>
+    <!-- end SKILLS -->
+
+  </div>
+
+</div>
+<!-- end Profile -->
 
 <!-- Works-->
 <div id='Works'>
@@ -36,7 +49,7 @@ title: Home
   <h2>.Works</h2>
   <div ng-controller='WorkController' >
     <accordion close-others='oneAtATime' >
-      <accordion-group class='panel panel-primary' ng-repeat="work in works" is-open="$first">
+      <accordion-group class='panel panel-info' ng-repeat="work in works" is-open="$first">
         <accordion-heading><h4 id='work_{{"{{ $index "}}}}' ng-click='scroll($index)' ng-bind='work.name' style='font-size:120%'></h4></accordion-heading>
         <div class='row'>
           <div class='col-md-5'>
@@ -47,16 +60,16 @@ title: Home
             </carousel>
           </div>
           <div class='col-md-7'>
-            <div class='container-fluid'>
-              <h4><span class='label label-info'>Introduction</span><h4>
+            <div>
+              <h4><span class='label label-info'>Intro</span><h4>
               <p ng-bind='work.detail'></p>
             </div>
             <div class='row'>
-              <ul class='col-md-7 list-group' ng-show='work.tasks'>
+              <ul class='col-md-6 list-group' ng-show='work.tasks'>
                 <span class='label label-success'>Task</span>
-                <li class='list-group-item'ng-repeat='task in work.tasks' ng-bind='task'></li>
+                <li class='list-group-item' ng-repeat='task in work.tasks' ng-bind='task'></li>
               </ul>
-              <div class='col-md-5 list-group' ng-show="work.links">
+              <div class='col-md-push-1 col-md-5 list-group' ng-show="work.links">
                 <span class='label label-warning'>Link</span>
                 <a class='list-group-item' ng-repeat='link in work.links' href='{{"{{link.url"}}}}' ng-bind='link.text'></a>  
               </div>  
@@ -67,16 +80,15 @@ title: Home
     </accordion>
   </div>
 </div>
+<!-- end Works -->
 
-
-<!-- <% raw %> -->
 <!-- Projects -->
 <div id='Projects'>
   <hr>
   <h2>.Projects</h2>
   <div ng-controller="ProjectController">
     <accordion>
-      <accordion-group class='panel panel-primary' ng-repeat="project in projects" is-open="$first">
+      <accordion-group class='panel panel-info' ng-repeat="project in projects" is-open="$first">
         <accordion-heading><h4 id='project_{{"{{$index"}}}}' ng-click='scroll($index)' ng-bind='project.name' style='font-size:120%'></h4></accordion-heading>
         <img ng-src='{{"{{project.imageURL"}}}}' class='img-thumbnail col-md-5' alt='pic'style='margin:auto'>
         <div class='col-md-7'>
@@ -95,18 +107,15 @@ title: Home
     </accordion>
   </div>
 </div>
-<!-- <% endraw %> -->
+<!-- end Projects -->
 
+<!-- Blog -->
 <div id='Blog'>
   <hr>
   	<h2>.Blog <a href='/blog/index.html'><span style='float:right;' class='label label-primary'>more&nbsp;<span class="badge">{{ site.posts | size }}</span></span></a> </h2>
 
     <div class='list-group'>
-<!-- 		{% assign post = site.posts.first %}
-		{% assign content = post.content %}
-		{% include post_detail.html %}
- -->
- 	{% for post in site.posts offset: 0 limit: 5  %}
+    {% for post in site.posts offset: 0 limit: 5  %}
         <a class='list-group-item' href='{{ post.url }}'>
             <h4 class='list-group-item-heading'>
               <strong>{{ post.title }}</strong>
@@ -116,17 +125,22 @@ title: Home
         </a>
     {% endfor %}
     </div>
-</div> 
+</div>
+<!-- end Blog -->
 
-<!-- <% raw %> -->
 <!-- Contact-->
 <div id='Contact'>
   <hr>
   <h2>.Contact</h2>
 
-  <div ng-controller="ContactController" class='container'>
-    <div class='container ' ng-repeat='item in contacts' ng-show='item'>
-      <span class='col-md-3 contact {{"{{item.name"}}}}'></span><a class="col-md-7" href='{{"{{item.href"}}}}' ng-bind='item.text'></a>
+  <div class='panel' style='width:50%; margin:auto;'>
+    <div class='panel-body'>
+      <div ng-controller="ContactController">
+        <div class='container ' ng-repeat='item in contacts' ng-show='item'>
+          <span class='col-md-3 contact {{"{{item.name"}}}}'></span><a class="col-md-7" href='{{"{{item.href"}}}}' ng-bind='item.text'></a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+<!-- end Contact -->

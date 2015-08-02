@@ -40,6 +40,26 @@ app.controller('ProfileController', ['$scope', function($scope){
 									 'danger';
 
 	}
+
+
+	JSONP( 'https://api.github.com/users/elcarim5efil?callback=?', function( response ) {
+		var data = response.data;
+		$scope.profile.gitnum = data.public_repos;
+		// console.log($scope.profile.gitnum);
+		console.log(data);
+	});
+
+	function JSONP( url, callback ) {
+		var id = ( 'jsonp' + Math.random() * new Date() ).replace('.', '');
+		var script = document.createElement('script');
+		script.src = url.replace( 'callback=?', 'callback=' + id );
+		document.body.appendChild( script );
+		window[ id ] = function( data ) {
+			if (callback) {
+				callback( data );
+			}
+		};
+	}
 }])
 
 // register "WorkController"

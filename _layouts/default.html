@@ -16,18 +16,18 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css"/>
 </head>
 
-<body style='background-color:#444444'>
+<body style='background-color:#444444; min-width:900px'>
   <header>
     
   </header>
   <!-- Navigate Bar-->
-  <div class="col-sm-3 col-md-2 sidebar" id='sidebar' ng-controller="NavController">
-    <ul class="nav nav-pills nav-stacked affix">
-      <li role="presentation" ng-repeat='menu in menus'><a href="#{{menu}}" ng-click="scroll($index)" ng-bind='menu'></a></li>
+  <div ng-controller="NavController">
+    <ul id='sidebar' class="nav nav-pills nav-stacked affix">
+      <li role="presentation" ng-repeat='menu in menus'><a class='text-center' href="#{{menu}}" ng-click="scroll($index)" ng-bind='menu'></a></li>
     </ul>
   </div>
 
-  <div class='cotainer' style='width:80%; margin:auto; padding:2.5% 10% 10% 10%; background-color:#FFFFFF'>    
+  <div class='cotainer my-container'>    
 
     {{ content }}
 

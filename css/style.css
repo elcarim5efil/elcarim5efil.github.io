@@ -20,19 +20,90 @@ time, mark, audio, video {
     vertical-align: baseline;
 }
 
+
+/*
+                        CUSTOM BOOTSTRAP THEME 
+______________________________________________
+*/
+.my-container {
+    width: 80%;
+    background-color: rgba(250,250,250,1);
+    margin: auto;
+    padding: 2.5% 10% 10% 10%;
+}
 .container {
     width:80%;
+}
+
+.panel{
+    border-radius: 0;
+    -o-border-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-color: rgba(200, 200, 200, 0.8);
+    box-shadow: 1px 1px 1px rgba(200,200,200, 0.8);
+    -o-box-shadow: 1px 1px 1px rgba(200,200,200, 0.8);
+    -moz-box-shadow: 1px 1px 1px rgba(200,200,200, 0.8);
+    -webkit-box-shadow: 1px 1px 1px rgba(200,200,200, 0.8);
+}
+.panel-info > .panel-heading {
+    background-color: #FFFFFF;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.panel-info > .panel-title {
+    outline: 0;
+    font-weight: bold;
+}
+
+.panel-info > .panel-collapse {
+    border-color: rgba(200, 200, 200, 0.8);
+}
+.panel-info>.panel-heading+.panel-collapse .panel-body {
+    border-top-color: rgba(200, 200, 200, 0.8);
+}
+
+.panel-title > a, .panel-title > a:hover, .panel-title > a:focus {
+    text-decoration: none;
+    color: rgb(80,80,80);
+    outline: none;
+}
+
+.post {
+    background-color: #FFFFFF;
+    padding: 10%;
+    width: 110%;
+    margin-left: -5%;
+    margin-right: 10%;
+    border-color: rgba(200, 200, 200, 0.8);
+    box-shadow: 1px 1px 1px rgba(200,200,200, 0.8);
+    -o-box-shadow: 1px 1px 1px rgba(200,200,200, 0.8);
+    -moz-box-shadow: 1px 1px 1px rgba(200,200,200, 0.8);
+    -webkit-box-shadow: 1px 1px 1px rgba(200,200,200, 0.8);
 }
 /*                                  SIDEBAR
  ___________________________________________
  */
+#sidebar {
+    background-color: #444444;
+    width: 10%;
+    min-width: 90px;
+}
+#sidebar li{
+    margin: auto;
+    width: 100%;
+}
 #sidebar li a{
 	color:#F0F0F0;
 }
-
 #sidebar li :hover{
 	color:#FFFFFF;
-	background-color:#22E2F2;
+	background-color: rgb(64,154,246);
+}
+#sidebar li :focus{
+    color:#FFFFFF;
+    background-color: rgb(246,218,64);
 }
 
 /*                                                 CONTACT
@@ -163,3 +234,4 @@ ____________________Menu Index Box
 #menuIndex ul li a:focus{
     outlien: none;
 }
+

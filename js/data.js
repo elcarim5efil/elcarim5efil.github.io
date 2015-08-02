@@ -10,6 +10,7 @@ profileData.profile = {
 	// 			,
 	name: "吴子然",
 	info:'东南大学 自动化学院',
+	gitrepo: 'https://github.com/elcarim5efil/repositories',
 };
 profileData.skills = [
 		{	name: "JavaScript",

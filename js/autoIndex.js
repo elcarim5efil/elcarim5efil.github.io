@@ -45,7 +45,11 @@ $(document).ready(function(){
 			}
 			headTop.push(item.offsetTop);					// save the headers offset top value
 		})
-
+	
+		$('pre').addClass('prettyprint linenums');			//添加Google code Hight需要的class
+		$.getScript('/js/prettify/prettify.js',function(){
+	        prettyPrint();
+	    })
 		var ulist = getHtmlText(list);						// convert the list into Htmltext constructed with <ul>s, <li>s and <a>s
 		var indexMenu = '<div id="menuIndex" style="overflow:scroll; width:200px; height:500px; float:right;" >' 	// create the menu
 						+		' <ul class="nav nav-pills nav-stacked">' 

@@ -1,14 +1,14 @@
 ---
 layout: default
 ---
-<link rel="stylesheet" href="/js/prettify/prettify.css" />
-<link rel="stylesheet" href="/css/default.css" type="text/css" />
-<div id="content" class='container' style='width:80%'>
-	<div class='panel' style=''>
-		<h1 class="entry-title"><a href="{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a></h1>
-		<p class="entry-date">{{ page.date | date:"%Y-%m-%d" }}</p>
+<!-- <link rel="stylesheet" href="/js/prettify/prettify.css" /> -->
+<link rel="stylesheet" href="/js/prettify/tomorrow_theme.css" />
+<!-- <link rel="stylesheet" href="/js/prettify/tomorrow-light.css" /> -->
+<!-- <script type="text/javascript" src="/js/prettify/prettify.js" ></script> -->
+<div id="content" class='container post'>
+		<h1><a href="{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a></h1>
+		<p>{{ page.date | date:"%Y-%m-%d" }}</p>
 		{{ content }}
-	</div>
 </div>
 
 <!-- 多说评论框 start -->

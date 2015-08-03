@@ -513,7 +513,7 @@ jQuery.prop则是直接对DOM对象上的property进行操作。
 > 
 >**Attribute** is **a quality** or **object that we attribute to someone or something**. For example, the scepter is an attribute of power and statehood.
 
->**Property **is **a quality that exists without any attribution**. For example, clay has adhesive qualities; or, one of the properties of metals is electrical conductivity. Properties demonstrate themselves though physical phenomena without the need attribute them to someone or something. By the same token, saying that someone has masculine attributes is self-evident. In effect, you could say that a property is owned by someone or something.
+>**Property** is **a quality that exists without any attribution**. For example, clay has adhesive qualities; or, one of the properties of metals is electrical conductivity. Properties demonstrate themselves though physical phenomena without the need attribute them to someone or something. By the same token, saying that someone has masculine attributes is self-evident. In effect, you could say that a property is owned by someone or something.
 
 >To be fair though, in Computer Science these two words, at least for the most part, can be used interchangeably - but then again programmers usually don't hold degrees in English Literature and do not write or care much about grammar books :).
 
@@ -524,6 +524,6 @@ jQuery.prop则是直接对DOM对象上的property进行操作。
 
 ##参考
 
-<a href="http://stackoverflow.com/questions/258469/what-is-the-difference-between-attribute-and-property">http://stackoverflow.com/questions/258469/what-is-the-difference-between-attribute-and-property</a>
+<a href="http://stackoverflow.com/questions/258469/what-is-the-difference-between-attribute-and-property">What is the difference between attribute and property?</a>
 
-<a href="http://www.jb51.net/article/50686.htm"><http://www.jb51.net/article/50686.htm/a>
+<a href="http://www.jb51.net/article/50686.htm">javascript中attribute和property的区别详解</a>

@@ -7,6 +7,7 @@
     <script type="text/javascript" src= "/frameworks/angular-animate.min.js"></script>
     <script type="text/javascript" src= "/frameworks/angular-route.min.js"></script>
     <script type="text/javascript" src= "/frameworks/angular-touch.min.js"></script>
+    <script type="text/javascript" src="/frameworks/angular-translate.min.js"></script>
     <script type="text/javascript" src="/frameworks/ui-bootstrap-tpls-0.13.2.min.js"></script>
     <script type="text/javascript" src="/js/data.js" ></script>
     <script type="text/javascript" src= "/js/app.js"></script>
@@ -17,16 +18,30 @@
     {% include google_analytics.html %}
 </head>
 
-<body style='background-color:#444444; min-width:900px'>
+<body ng-controller="GlobalController" style='background-color:#444444; min-width:900px'>
   <header>
-    
+    <div class='row'>
+        <div class='col-md-10'></div>
+        <div class='col-md-2'>
+          <select class='form-control lang-select' ng-model="lang" ng-change="selectChange()">
+            <option value="zh">Chinese</option>
+            <option value="en">English</option>
+          </select>
+        </div>
+    </div>
   </header>
+
   <!-- Navigate Bar-->
   <div ng-controller="NavController">
     <ul id='sidebar' class="nav nav-pills nav-stacked affix">
-      <li role="presentation" ng-repeat='menu in menus'><a class='text-center' href="#{{menu}}" ng-click="scroll($index)" ng-bind='menu'></a></li>
+      <li role="presentation" ng-repeat='menu in menus'><a class='text-center' href='#{{"{{menu.text"}}}}' ng-click="scroll($index)">{{"{{menu.translationTag  | translate"}}}}</a></li>
     </ul>
   </div>
+  <!-- <div ng-controller="NavController">
+    <ul id='sidebar' class="nav nav-pills nav-stacked affix">
+      <li role="presentation" ng-repeat='menu in menus'><a class='text-center' href="#{{menu}}" ng-click="scroll($index)" ng-bind='menu'></a></li>
+    </ul>
+  </div> -->
 
   <div class='cotainer my-container'>    
 

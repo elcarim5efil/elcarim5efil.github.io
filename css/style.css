@@ -20,7 +20,14 @@ time, mark, audio, video {
     vertical-align: baseline;
 }
 
-
+/* 
+                            Language Select Menu
+______________________________________________
+ */
+.lang-select {
+    width: 60%;
+    float: right;
+}
 /*
                         CUSTOM BOOTSTRAP THEME 
 ______________________________________________
@@ -191,7 +198,8 @@ __________________________________________________________
 }
 
 /* 
-____________________Menu Index Box
+                    Menu Index Box
+__________________________________
 */
 
 

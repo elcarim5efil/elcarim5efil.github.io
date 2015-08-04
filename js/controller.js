@@ -1,11 +1,33 @@
+// register "GlobalController"
+app.controller('GlobalController', ['$scope', '$translate', function($scope, $translate){
+	// select the language
+	$scope.lang = getLang(window.navigator.language);
+	$translate.use($scope.lang);
+	
+	function getLang(lang) {
+		lang = lang.toLowerCase();
+		if(lang.substr('zh') != -1 || lang.substr('cn') != -1) {
+			return 'zh';
+		} else {
+			return 'en';
+		}
+	}
+
+	$scope.selectChange = function(){
+		$translate.use($scope.lang);
+	}
+
+}])
+
+
 // register "NavController"
-app.controller('NavController', ['$scope', '$location', 'anchorSmoothScroll', function($scope, $location, anchorSmoothScroll){
+app.controller('NavController', ['$scope', '$location', 'anchorSmoothScroll', '$translate', function($scope, $location, anchorSmoothScroll){
 	$scope.menus = [
-		'Profile',
-		'Works',
-		'Projects',
-		'Blog',
-		'Contact'
+		{id: 0, text: 'Profile', translationTag: 'MENU.PROFILE'},
+		{id: 1, text: 'Works', translationTag: 'MENU.WORKS'},
+		{id: 2, text: 'Projects', translationTag: 'MENU.PROJECTS'},
+		{id: 3, text: 'Blog', translationTag: 'MENU.BLOG'},
+		{id: 4, text: 'Contact', translationTag: 'MENU.CONTACT'}
 	];
 
 	if(window.name != null && document.getElementById(window.name) != null) {
@@ -19,17 +41,18 @@ app.controller('NavController', ['$scope', '$location', 'anchorSmoothScroll', fu
 		var path = window.location.pathname;
 		if(String.prototype.indexOf.call(path, 'blog') != -1) {
 			window.location = window.location.origin;
-			window.name = $scope.menus[index];
+			window.name = $scope.menus[index].text;
 		} else {
-			anchorSmoothScroll.scrollTo($scope.menus[index], -20);
+			anchorSmoothScroll.scrollTo($scope.menus[index].text, -20);
 		}
 	}
 }])
 
-// register "SkillController"
+// register "ProfileController"
 app.controller('ProfileController', ['$scope', function($scope){
-	$scope.profile = profileData.profile;
+	$scope.gitrepo = profileData.profile.gitrepo;
 	$scope.skills = profileData.skills;
+
 	var skills = $scope.skills;
 	for(key in skills) {
 		var t = Math.floor(Math.random() * 5);
@@ -41,12 +64,9 @@ app.controller('ProfileController', ['$scope', function($scope){
 
 	}
 
-
 	JSONP( 'https://api.github.com/users/elcarim5efil?callback=?', function( response ) {
 		var data = response.data;
 		$scope.profile.gitnum = data.public_repos;
-		// console.log($scope.profile.gitnum);
-		console.log(data);
 	});
 
 	function JSONP( url, callback ) {
@@ -93,11 +113,3 @@ app.controller('ProjectController', ['$scope', '$location', 'anchorSmoothScroll'
 app.controller('ContactController', ['$scope', function($scope){
 	$scope.contacts = profileData.contacts;
 }])
-
-app.config(['$routeProvider', function($routeProvider){
-    $routeProvider
-		.when('/', {
-			//controller : 'RootCtrl',
-			templateUrl : 'template/introduction.html'
-		})
-}]);  

@@ -128,6 +128,7 @@ ________________________________________________
     -webkit-box-shadow: 1px 1px 1px rgba(200,200,200, 0.8);
 }
 
+
 /*                                                 CONTACT
 __________________________________________________________
 */
@@ -234,9 +235,8 @@ __________________________________
 #menuIndex ul, #menuIndex li {
     width: 400px;
 }
-#menuIndex ul li a:hover, #menuIndex ul li.on, #menuIndex ul li a:focus{
-    background: rgba(0, 160, 200, 0.5);
-    width: 3px;
+#menuIndex ul li a:hover, #menuIndex ul li.on, #menuIndex ul li a:focus{   
+    /*width: 3px;*/
     white-space:nowrap;
     overflow: visible;
     transition-property: all;
@@ -249,6 +249,16 @@ __________________________________
     -webkit-transition-duration: 0.5s;
 }
 
+#menuIndex ul li a:hover {
+    background: rgba(0, 160, 200, 0.5);
+}
+#menuIndex ul li.on {
+    border-left: 3px solid rgba(0, 160, 200, 0.2);
+}
+#menuIndex ul li a:focus {
+    border-left: 3px solid rgba(0, 160, 200, 0.5);
+}
+
 #menuIndex ul li a:hover{
     width: 400px;
     color:white;
@@ -257,4 +267,3 @@ __________________________________
 #menuIndex ul li a:focus{
     outline: none;
 }
-

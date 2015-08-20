@@ -255,9 +255,9 @@ BFC的一个最重要的效果是，让处于BFC内部的元素与外部的元�
 
 ##参考
 
-[视觉格式化模型 | MDN](https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Visual_formatting_model)
+[视觉格式化模型_MDN](https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Visual_formatting_model)
 
-[块格式化上下文| MDN ](https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context)
+[块格式化上下文_MDN ](https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context)
 
 [CSS之BFC详解](http://www.html-js.com/article/1866)
 

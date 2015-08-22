@@ -11,7 +11,7 @@ profileData.skills = [
 			level: 7
 		},
 		{	name: "C++",
-			level: 8
+			level: 7
 		},
 		{	name: "Photoshop",
 			level: 8
@@ -20,7 +20,7 @@ profileData.skills = [
 			level: 6
 		},
 		{	name: "Node.js",
-			level: 7
+			level: 6
 		},
 		{	name: "AngularJS",
 			level: 6

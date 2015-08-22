@@ -47,7 +47,7 @@ title: Home
   <hr>
   <h2>.Works</h2>
   <div ng-controller='WorkController' >
-    <accordion close-others='oneAtATime' >
+    <accordion close-others='' >
       <accordion-group class='panel panel-info' ng-repeat="work in works" is-open="$first">
         <accordion-heading><h4 id='work_{{"{{ $index "}}}}' ng-click='scroll($index)' ng-bind='work.name[lang]' style='font-size:120%'></h4></accordion-heading>
         <div class='row'>
@@ -86,7 +86,7 @@ title: Home
   <hr>
   <h2>.Projects</h2>
   <div ng-controller="ProjectController">
-    <accordion>
+    <accordion close-others=''>
       <accordion-group class='panel panel-info' ng-repeat="project in projects" is-open="$first">
         <accordion-heading><h4 id='project_{{"{{$index"}}}}' ng-click='scroll($index)' ng-bind='project.name[lang]' style='font-size:120%'></h4></accordion-heading>
         <img ng-src='{{"{{project.imageURL"}}}}' class='img-thumbnail col-md-5' alt='pic'style='margin:auto'>

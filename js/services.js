@@ -56,6 +56,20 @@ app.service('anchorSmoothScroll', function(){
     
 });
 
+app.service('JSONP', function(){
+    this.get = function( url, callback ) {
+        var id = ( 'jsonp' + Math.random() * new Date() ).replace('.', '');
+        var script = document.createElement('script');
+        script.src = url.replace( 'callback=?', 'callback=' + id );
+        document.body.appendChild( script );
+        window[ id ] = function( data ) {
+            if (callback) {
+                callback( data );
+            }
+        };
+    }
+});
+
 // app.controller('ScrollCtrl', function($scope, $location, anchorSmoothScroll) {    
 //     $scope.gotoElement = function (eID){
 //         // set the location.hash to the id of

@@ -21,7 +21,7 @@ app.controller('GlobalController', ['$scope', '$translate', function($scope, $tr
 
 
 // register "NavController"
-app.controller('NavController', ['$scope', '$location', 'anchorSmoothScroll', '$translate', function($scope, $location, anchorSmoothScroll){
+app.controller('NavController', ['$scope', '$location', 'anchorSmoothScroll', '$translate' ,  function($scope, $location, anchorSmoothScroll){
 	$scope.menus = [
 		{id: 0, text: 'Profile', translationTag: 'MENU.PROFILE'},
 		{id: 1, text: 'Works', translationTag: 'MENU.WORKS'},
@@ -49,9 +49,10 @@ app.controller('NavController', ['$scope', '$location', 'anchorSmoothScroll', '$
 }])
 
 // register "ProfileController"
-app.controller('ProfileController', ['$scope', function($scope){
+app.controller('ProfileController', ['$scope', 'JSONP', function($scope, JSONP){
 	$scope.gitrepo = profileData.profile.gitrepo;
 	$scope.skills = profileData.skills;
+	$scope.profile = {};
 
 	var skills = $scope.skills;
 	for(key in skills) {
@@ -63,23 +64,24 @@ app.controller('ProfileController', ['$scope', function($scope){
 									 'danger';
 
 	}
-
-	JSONP( 'https://api.github.com/users/elcarim5efil?callback=?', function( response ) {
+	
+	JSONP.get('https://api.github.com/users/elcarim5efil?callback=?', function( response ) {
 		var data = response.data;
 		$scope.profile.gitnum = data.public_repos;
+		$scope.$apply();
 	});
 
-	function JSONP( url, callback ) {
-		var id = ( 'jsonp' + Math.random() * new Date() ).replace('.', '');
-		var script = document.createElement('script');
-		script.src = url.replace( 'callback=?', 'callback=' + id );
-		document.body.appendChild( script );
-		window[ id ] = function( data ) {
-			if (callback) {
-				callback( data );
-			}
-		};
-	}
+	// function JSONP( url, callback ) {
+	// 	var id = ( 'jsonp' + Math.random() * new Date() ).replace('.', '');
+	// 	var script = document.createElement('script');
+	// 	script.src = url.replace( 'callback=?', 'callback=' + id );
+	// 	document.body.appendChild( script );
+	// 	window[ id ] = function( data ) {
+	// 		if (callback) {
+	// 			callback( data );
+	// 		}
+	// 	};
+	// }
 }])
 
 // register "WorkController"

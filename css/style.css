@@ -104,11 +104,11 @@ ______________________________________________
 #sidebar li a{
 	color:#F0F0F0;
 }
-#sidebar li:hover{
+#sidebar li :hover{
 	color:#FFFFFF;
 	background-color: rgb(64,154,246);
 }
-#sidebar li:focus{
+#sidebar li :focus{
     color:#FFFFFF;
     background-color: rgb(246,218,64);
 }

@@ -513,3 +513,19 @@ keycode   40 = Down
             window.event.preventDefault();
         }
     }, false);*/
+
+
+(function(that){
+	if(canvas.addEventListener){
+		canvas.addEventListener('touchstart', handler(that), false);
+	} else if(canvas.attachEvent){
+		canvas.attachEvent('ontouchstart', handler(that));
+	} else {
+		canvas.ontouchstart = handler(that);
+	}
+	function handler(that){
+		return function(){
+			that.bird.fly();
+		}
+	}
+})(this);

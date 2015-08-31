@@ -62,6 +62,31 @@ profileData.works = [
 				{	text:'APP Code', url: 'https://github.com/elcarim5efil/QML_Project'	}
 			]
 		},
+		// CSS3 Material Design
+		{	name: {
+				'en':"CSS3 Material Design",
+				'zh':"CSS3 Material Design"
+			},
+			detail: {
+				'en': "This is a Material Designe Style theme based on pure CSS3. The grid system is based on Bootstrap. So far, components like buttons, navigators have been completed, and I am working on other stuff.",
+				'zh': "基纯CSS3设计的Material Design 风格主题，使用了Bootstrap的栅格化系统，目前已经实现按钮、导航栏等一些基本组件，项目正在开展中。",
+			},
+			imagesURLs: [	
+					'images/projects/mdcss.jpg'
+			],
+			tasks: {
+				'en': [
+					'HTML5/CSS3'
+				],
+				'zh': [
+					'HTML5/CSS3'
+				],
+			},
+			links: [
+				{	text:'Demo', url: './projects/CSS_MD/main_demo.html'	},
+				{	text:'Code', url: 'https://github.com/elcarim5efil/CSS_MaterialDesign'	}
+			]
+		},
 		// WebGame: 2048
 		{	name: {
 				'en':"WebGame: 2048",

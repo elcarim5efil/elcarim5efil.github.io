@@ -710,7 +710,7 @@ body {
   clear: both;
 }
 
-/* Material Design Style Button */
+/* Button */
 .md-btn{
   width: 100px;
   height: 33px;
@@ -746,74 +746,12 @@ body {
   top: 0;
   left: 0;
 }
-.md-btn:not(:active)::after{
-  content:"";
-  background: rgba(255, 255, 255, 0.5);
-  top: 50%;
-  left: 50%;
-  margin-top: -50%;
-  margin-left: -50%;
-  position: absolute;
 
-  width: 100%;
-  height: 300%;
-  border-radius: 200%;
-  opacity: 0;
-
-  -o-animation: md-btn-spread .5s linear;
-  -moz-animation: md-btn-spread .5s linear;
-  -webkit-animation: md-btn-spread .5s linear;
-  animation: md-btn-spread .5s linear;
-}
-.md-btn::after{     /* if this is non-existed, it won't work on firefox */
-  content:"";
-}
 .md-btn:hover{
   -o-box-shadow: 0 3px 20px 0 rgba(0, 0, 0, 0.19), 0 4px 17px 0 rgba(0, 0, 0, 0.2), inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
   -moz-box-shadow: 0 3px 20px 0 rgba(0, 0, 0, 0.19), 0 4px 17px 0 rgba(0, 0, 0, 0.2), inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
   -webkit-box-shadow: 0 3px 20px 0 rgba(0, 0, 0, 0.19), 0 4px 17px 0 rgba(0, 0, 0, 0.2), inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
   box-shadow: 0 3px 20px 0 rgba(0, 0, 0, 0.19), 0 4px 17px 0 rgba(0, 0, 0, 0.2), inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
-}
-
-@-o-keyframes md-btn-spread{
-  0% {
-    transform: scale(0.1);
-    opacity: 1;
-  }
-  100%{
-    transform: scale(2);
-    opacity: 0;
-  }
-}
-@-webkit-keyframes md-btn-spread{
-  0% {
-    transform: scale(0.1);
-    opacity: 1;
-  }
-  100%{
-    transform: scale(2);
-    opacity: 0;
-  }
-}
-@-moz-keyframes md-btn-spread{
-  0% {
-    transform: scale(0.1);
-    opacity: 1;
-  }
-  100%{
-    transform: scale(2);
-    opacity: 0;
-  }
-}
-@keyframes md-btn-spread{
-  0% {
-    transform: scale(0.1);
-    opacity: 1;
-  }
-  100%{
-    transform: scale(2);
-    opacity: 0;
-  }
 }
 
 .md-btn-small{
@@ -824,11 +762,10 @@ body {
   width: 150px;
   height: 50px;
 }
-/* Material Design Style Button End*/
+/* Button End*/
 
 
-/* Material Design Style Addbutton */
-
+/* Addbutton */
 .md-add{
   width: 40px;
   height: 40px;
@@ -873,80 +810,11 @@ body {
   margin-top: -15%;
 }
 
-.md-add::after{
-  content: "";
-}
-
-.md-add:not(:active)::after{
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 50%;
-  left: 50%;
-  margin-left: -50%;
-  margin-top: -50%;
-  opacity: 0;
-  
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.3);
-
-  background-size: 100% 100%;
-  background-position: center center;
-  background-repeat:no-repeat;
-
-  -o-animation: md-add-spread 0.5s linear;
-  -moz-animation: md-add-spread 0.5s linear;
-  -webkit-animation: md-add-spread 0.5s linear;
-  animation: md-add-spread 0.5s linear;
-}
-
 .md-add:hover{
   -o-box-shadow: 0 3px 20px 0 rgba(0, 0, 0, 0.19), 0 4px 17px 0 rgba(0, 0, 0, 0.2), inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
   -moz-box-shadow: 0 3px 20px 0 rgba(0, 0, 0, 0.19), 0 4px 17px 0 rgba(0, 0, 0, 0.2), inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
   -webkit-box-shadow: 0 3px 20px 0 rgba(0, 0, 0, 0.19), 0 4px 17px 0 rgba(0, 0, 0, 0.2), inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
   box-shadow: 0 3px 20px 0 rgba(0, 0, 0, 0.19), 0 4px 17px 0 rgba(0, 0, 0, 0.2), inset 0 0 100px 100px rgba(255, 255, 255, 0.1)
-}
-
-@-o-keyframes md-add-spread{
-  0%{
-    transform: scale(0.1);
-    opacity: 1;
-  }
-  100%{
-    transform: scale(2);
-    opacity: 0;
-  }
-}
-@-moz-keyframes md-add-spread{
-  0%{
-    transform: scale(0.1);
-    opacity: 1;
-  }
-  100%{
-    transform: scale(2);
-    opacity: 0;
-  }
-}
-@-webkit-keyframes md-add-spread{
-  0%{
-    transform: scale(0.1);
-    opacity: 1;
-  }
-  100%{
-    transform: scale(2);
-    opacity: 0;
-  }
-}
-@keyframes md-add-spread{
-  0%{
-    transform: scale(0.1);
-    opacity: 1;
-  }
-  100%{
-    transform: scale(2);
-    opacity: 0;
-  }
 }
 
 .md-min::before{
@@ -962,10 +830,10 @@ body {
   width: 30px;
   height: 30px;
 }
+/* Addbutton End*/
 
-/* Material Design Style Addbutton end */
 
-/* Material Design Style Collection */
+/* Collection */
 .collection{
   display: block;
   padding: 0;
@@ -1011,9 +879,9 @@ body {
   color: white;
 }
 
-/* Material Design Style Collection End*/
+/* Collection End*/
 
-/* Material Design Style Form */
+/* Form */
 
  /* ------ input box (required) ------- */
 .md-input {
@@ -1394,10 +1262,10 @@ body {
 }
 /* ------------------- textarear ---------------- */
 
-/* Material Design Style Form End */
+/* Form End */
 
 
-/* Material Design Style Navigator */
+/* Navigator */
 
 .nav {
   display: block;
@@ -1556,9 +1424,9 @@ body {
 
 /* side navigator end */
 
-/* Material Design Style Navigator End*/
+/* Navigator End*/
 
-/* Material Design Style Progressbar */
+/* Progressbar */
 
 .md-progressbar{
   /*width: 400px;*/
@@ -1670,7 +1538,7 @@ body {
   }
 }
 
-/* Material Design Style Progressbar End */
+/* Progressbar End */
 
 /*  Color Theme */
 
@@ -1701,5 +1569,91 @@ body {
 .bluegrey{
   background-color: #263238;
 }
-
 /* Color Theme End */
+
+/* Animations */
+.md-wave::after {
+  content: "";
+}
+
+.md-wave:not(:active)::after {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  top: 50%;
+  left: 50%;
+  margin-left: -60px;
+  margin-top: -60px;
+  opacity: 0;
+  
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+
+  background-size: 100% 100%;
+  background-position: center center;
+  background-repeat:no-repeat;
+
+  -o-animation: md-add-spread 0.7s linear;
+  -moz-animation: md-add-spread 0.7s linear;
+  -webkit-animation: md-add-spread 0.7s linear;
+  animation: md-add-spread 0.7s linear;
+}
+
+.md-wave-red:not(:active)::after  {
+  background-color: rgba(230, 58, 58, .8);
+}
+
+.md-wave-blue:not(:active)::after  {
+  background-color: rgba(75, 158, 251, .8);
+}
+
+.md-wave-green:not(:active)::after  {
+  background-color: rgba(129, 237, 86, .8);
+}
+
+.md-wave-yellow:not(:active)::after  {
+  background-color: rgba(250, 242, 90, .8);
+}
+
+@-o-keyframes md-add-spread{
+  0%{
+    transform: scale(0.1);
+    opacity: 1;
+  }
+  100%{
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+@-moz-keyframes md-add-spread{
+  0%{
+    transform: scale(0.1);
+    opacity: 1;
+  }
+  100%{
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+@-webkit-keyframes md-add-spread{
+  0%{
+    transform: scale(0.1);
+    opacity: 1;
+  }
+  100%{
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+@keyframes md-add-spread{
+  0%{
+    transform: scale(0.1);
+    opacity: 1;
+  }
+  100%{
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+/* Animations End*/

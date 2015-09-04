@@ -141,7 +141,7 @@ profileData.works = [
 				],
 			},
 			links: [
-				{	text:'Demo', url: './projects/my2048/my2048.html'	}
+				{	text:'Demo', url: './projects/DumbSoccer/DumbSoccer.html'	}
 			]
 		},
 		// WebGame: Flappy Bird
